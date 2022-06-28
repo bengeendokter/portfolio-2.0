@@ -5,7 +5,11 @@ import ProjectPreview from '@components/ProjectPreview';
 import styles from '@styles/Home.module.css';
 import GithubSVG from '@components/SVGIcons/github.svg';
 import createRSS from '@utils/createRSS';
-import Project from '@ts/Project'
+import ProjectNode from '@ts/ProjectNode'
+import { useTina } from "tinacms/dist/edit-state";
+import Project from '@ts/Project';
+
+
 
 const query = gql`{
   projectsConnection{
@@ -14,7 +18,11 @@ const query = gql`{
       node
       {
 				title
-       	description
+        tags
+        description
+        imgAlt
+        imgSrc
+        github
         _sys
         {
           breadcrumbs
@@ -24,13 +32,25 @@ const query = gql`{
   }
 }}`
 
-export default function Home()
+export default function Home(props: { variables: any, data: any, locale : string })
 {
-  const projecten : Array<any> = [];
+  const { data } = useTina({
+    query,
+    variables: props.variables,
+    data: props.data,
+  });
+
+  const projects: Array<ProjectNode> = data.projectsConnection.edges
+  .map(({ node }: { node: ProjectNode }) => node)
+  .filter((project : ProjectNode) => project._sys.breadcrumbs[0] == props.locale);
+
+  console.log(projects)
+  console.log(props.locale)
+
 
   return (
     <>
-       <header>
+      <header>
         <a className={styles.skip_nav} href="#main-content">Navigatie overslaan</a>
         <nav>
           <ul>
@@ -53,7 +73,7 @@ export default function Home()
         </section>
         <section aria-labelledby='projecten-title' id='projecten' className={styles.projecten}>
           <h2 id='projecten-title'>Projecten</h2>
-          {projecten.map((project: any, i: number) => <ProjectPreview key={i} {...project} />)}
+          {projects.map((project, i: number) => <ProjectPreview key={i} {...project} />)}
         </section>
         <section aria-labelledby='CV-title' id='CV' className={styles.CV}>
           <h2 id='CV-title'>CV</h2>
@@ -76,7 +96,7 @@ export default function Home()
   )
 }
 
-export const getStaticProps = async ({locales} : {locales : Array<string>}) =>
+export const getStaticProps = async ({ locales, locale }: { locales: Array<string>, locale : string }) =>
 {
   const variables = {}
   let data: any = {}
@@ -90,13 +110,14 @@ export const getStaticProps = async ({locales} : {locales : Array<string>}) =>
     // swallow errors related to document creation
   }
 
-  const projecten: Array<Project> = data.projectsConnection.edges.map(({ node }: { node: Project }) => node);
-  createRSS(projecten, locales);
+  const projects: Array<ProjectNode> = data.projectsConnection.edges.map(({ node }: { node: ProjectNode }) => node);
+  createRSS(projects, locales);
 
   return {
     props: {
       variables,
       data,
+      locale,
     },
   }
 };

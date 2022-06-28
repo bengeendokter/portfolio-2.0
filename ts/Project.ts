@@ -1,1 +1,1 @@
-export default interface Project { title : string, description : string, _sys: {breadcrumbs : Array<string>}}
+export default interface Project { title: string, tags: Array<string>, description: string, imgSrc: string, imgAlt: string, github: string };
