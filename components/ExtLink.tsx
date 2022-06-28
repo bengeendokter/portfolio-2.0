@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ExtLink({children, href="test", target="_blank", ...rest})
+export default function ExtLink({children, href="test", target="_blank", ...rest} : any)
 {
     return (
         <a href={href} target={target} rel="noopener noreferrer" {...rest}>
