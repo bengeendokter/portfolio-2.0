@@ -9,8 +9,8 @@
   import Path from "@ts/Path"
 
   const query = gql`
-    query BlogPostQuery($relativePath: String!) {
-      posts(relativePath: $relativePath) {
+    query ProjectPostQuery($relativePath: String!) {
+      projects(relativePath: $relativePath) {
         title
         body
       }
@@ -77,10 +77,10 @@
             }}
           >
             <h1 className="text-3xl m-8 text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {data.posts.title}
+              {data.projects.title}
             </h1>
             <ContentSection
-              content={data.posts.body}
+              content={data.projects.body}
             ></ContentSection>
           </div>
           <div className="bg-green-100 text-center">
@@ -122,8 +122,8 @@
   export const getStaticPaths = async () => {
     const postsListData : any = (await staticRequest({
       query: gql`
-        query GetPostsList {
-          postsConnection {
+        query GetProjectsList {
+          projectsConnection {
             edges {
               node {
                 ...on Document {
@@ -140,7 +140,7 @@
 
     const paths : Array<Path> = [];
 
-    postsListData.postsConnection.edges.map((post : any) => {
+    postsListData.projectsConnection.edges.map((post : any) => {
       // ensure a `path` is created for each `locale`
         paths.push({
           params: { filename: post.node._sys.breadcrumbs[1] },

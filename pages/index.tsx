@@ -8,7 +8,7 @@ import createRSS from '@utils/createRSS';
 import Project from '@ts/Project'
 
 const query = gql`{
-  postsConnection{
+  projectsConnection{
 	edges
     {
       node
@@ -90,7 +90,7 @@ export const getStaticProps = async ({locales} : {locales : Array<string>}) =>
     // swallow errors related to document creation
   }
 
-  const projecten: Array<Project> = data.postsConnection.edges.map(({ node }: { node: Project }) => node);
+  const projecten: Array<Project> = data.projectsConnection.edges.map(({ node }: { node: Project }) => node);
   createRSS(projecten, locales);
 
   return {
