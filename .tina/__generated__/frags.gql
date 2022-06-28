@@ -1,4 +1,4 @@
-fragment PostsParts on Posts {
+fragment ProjectsParts on Projects {
   title
   description
   body

@@ -48,8 +48,8 @@ type Query {
   collections: [Collection!]!
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
-  posts(relativePath: String): Posts!
-  postsConnection(before: String, after: String, first: Float, last: Float, sort: String): PostsConnection!
+  projects(relativePath: String): Projects!
+  projectsConnection(before: String, after: String, first: Float, last: Float, sort: String): ProjectsConnection!
 }
 
 type DocumentConnectionEdges {
@@ -75,9 +75,9 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String): DocumentConnection!
 }
 
-union DocumentNode = Posts
+union DocumentNode = Projects
 
-type Posts implements Node & Document {
+type Projects implements Node & Document {
   title: String
   description: String
   body: JSON
@@ -86,15 +86,15 @@ type Posts implements Node & Document {
   _values: JSON!
 }
 
-type PostsConnectionEdges {
+type ProjectsConnectionEdges {
   cursor: String!
-  node: Posts
+  node: Projects
 }
 
-type PostsConnection implements Connection {
+type ProjectsConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
-  edges: [PostsConnectionEdges]
+  edges: [ProjectsConnectionEdges]
 }
 
 type Mutation {
@@ -102,15 +102,15 @@ type Mutation {
   updateDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
-  updatePosts(relativePath: String!, params: PostsMutation!): Posts!
-  createPosts(relativePath: String!, params: PostsMutation!): Posts!
+  updateProjects(relativePath: String!, params: ProjectsMutation!): Projects!
+  createProjects(relativePath: String!, params: ProjectsMutation!): Projects!
 }
 
 input DocumentMutation {
-  posts: PostsMutation
+  projects: ProjectsMutation
 }
 
-input PostsMutation {
+input ProjectsMutation {
   title: String
   description: String
   body: JSON

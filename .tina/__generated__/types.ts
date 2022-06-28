@@ -73,8 +73,8 @@ export type Query = {
   collections: Array<Collection>;
   node: Node;
   document: DocumentNode;
-  posts: Posts;
-  postsConnection: PostsConnection;
+  projects: Projects;
+  projectsConnection: ProjectsConnection;
 };
 
 
@@ -99,12 +99,12 @@ export type QueryDocumentArgs = {
 };
 
 
-export type QueryPostsArgs = {
+export type QueryProjectsArgs = {
   relativePath?: InputMaybe<Scalars['String']>;
 };
 
 
-export type QueryPostsConnectionArgs = {
+export type QueryProjectsConnectionArgs = {
   before?: InputMaybe<Scalars['String']>;
   after?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Float']>;
@@ -147,10 +147,10 @@ export type CollectionDocumentsArgs = {
   sort?: InputMaybe<Scalars['String']>;
 };
 
-export type DocumentNode = Posts;
+export type DocumentNode = Projects;
 
-export type Posts = Node & Document & {
-  __typename?: 'Posts';
+export type Projects = Node & Document & {
+  __typename?: 'Projects';
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['JSON']>;
@@ -159,17 +159,17 @@ export type Posts = Node & Document & {
   _values: Scalars['JSON'];
 };
 
-export type PostsConnectionEdges = {
-  __typename?: 'PostsConnectionEdges';
+export type ProjectsConnectionEdges = {
+  __typename?: 'ProjectsConnectionEdges';
   cursor: Scalars['String'];
-  node?: Maybe<Posts>;
+  node?: Maybe<Projects>;
 };
 
-export type PostsConnection = Connection & {
-  __typename?: 'PostsConnection';
+export type ProjectsConnection = Connection & {
+  __typename?: 'ProjectsConnection';
   pageInfo: PageInfo;
   totalCount: Scalars['Float'];
-  edges?: Maybe<Array<Maybe<PostsConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<ProjectsConnectionEdges>>>;
 };
 
 export type Mutation = {
@@ -178,8 +178,8 @@ export type Mutation = {
   updateDocument: DocumentNode;
   deleteDocument: DocumentNode;
   createDocument: DocumentNode;
-  updatePosts: Posts;
-  createPosts: Posts;
+  updateProjects: Projects;
+  createProjects: Projects;
 };
 
 
@@ -210,37 +210,37 @@ export type MutationCreateDocumentArgs = {
 };
 
 
-export type MutationUpdatePostsArgs = {
+export type MutationUpdateProjectsArgs = {
   relativePath: Scalars['String'];
-  params: PostsMutation;
+  params: ProjectsMutation;
 };
 
 
-export type MutationCreatePostsArgs = {
+export type MutationCreateProjectsArgs = {
   relativePath: Scalars['String'];
-  params: PostsMutation;
+  params: ProjectsMutation;
 };
 
 export type DocumentMutation = {
-  posts?: InputMaybe<PostsMutation>;
+  projects?: InputMaybe<ProjectsMutation>;
 };
 
-export type PostsMutation = {
+export type ProjectsMutation = {
   title?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
   body?: InputMaybe<Scalars['JSON']>;
 };
 
-export type PostsPartsFragment = { __typename?: 'Posts', title?: string | null, description?: string | null, body?: any | null };
+export type ProjectsPartsFragment = { __typename?: 'Projects', title?: string | null, description?: string | null, body?: any | null };
 
-export type PostsQueryVariables = Exact<{
+export type ProjectsQueryVariables = Exact<{
   relativePath: Scalars['String'];
 }>;
 
 
-export type PostsQuery = { __typename?: 'Query', posts: { __typename?: 'Posts', id: string, title?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type ProjectsQuery = { __typename?: 'Query', projects: { __typename?: 'Projects', id: string, title?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
-export type PostsConnectionQueryVariables = Exact<{
+export type ProjectsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']>;
   after?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Float']>;
@@ -249,18 +249,18 @@ export type PostsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PostsConnectionQuery = { __typename?: 'Query', postsConnection: { __typename?: 'PostsConnection', totalCount: number, edges?: Array<{ __typename?: 'PostsConnectionEdges', node?: { __typename?: 'Posts', id: string, title?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type ProjectsConnectionQuery = { __typename?: 'Query', projectsConnection: { __typename?: 'ProjectsConnection', totalCount: number, edges?: Array<{ __typename?: 'ProjectsConnectionEdges', node?: { __typename?: 'Projects', id: string, title?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
-export const PostsPartsFragmentDoc = gql`
-    fragment PostsParts on Posts {
+export const ProjectsPartsFragmentDoc = gql`
+    fragment ProjectsParts on Projects {
   title
   description
   body
 }
     `;
-export const PostsDocument = gql`
-    query posts($relativePath: String!) {
-  posts(relativePath: $relativePath) {
+export const ProjectsDocument = gql`
+    query projects($relativePath: String!) {
+  projects(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -272,13 +272,13 @@ export const PostsDocument = gql`
       }
       id
     }
-    ...PostsParts
+    ...ProjectsParts
   }
 }
-    ${PostsPartsFragmentDoc}`;
-export const PostsConnectionDocument = gql`
-    query postsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String) {
-  postsConnection(
+    ${ProjectsPartsFragmentDoc}`;
+export const ProjectsConnectionDocument = gql`
+    query projectsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String) {
+  projectsConnection(
     before: $before
     after: $after
     first: $first
@@ -299,20 +299,20 @@ export const PostsConnectionDocument = gql`
           }
           id
         }
-        ...PostsParts
+        ...ProjectsParts
       }
     }
   }
 }
-    ${PostsPartsFragmentDoc}`;
+    ${ProjectsPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
-      posts(variables: PostsQueryVariables, options?: C): Promise<{data: PostsQuery, variables: PostsQueryVariables, query: string}> {
-        return requester<{data: PostsQuery, variables: PostsQueryVariables, query: string}, PostsQueryVariables>(PostsDocument, variables, options);
+      projects(variables: ProjectsQueryVariables, options?: C): Promise<{data: ProjectsQuery, variables: ProjectsQueryVariables, query: string}> {
+        return requester<{data: ProjectsQuery, variables: ProjectsQueryVariables, query: string}, ProjectsQueryVariables>(ProjectsDocument, variables, options);
       },
-    postsConnection(variables?: PostsConnectionQueryVariables, options?: C): Promise<{data: PostsConnectionQuery, variables: PostsConnectionQueryVariables, query: string}> {
-        return requester<{data: PostsConnectionQuery, variables: PostsConnectionQueryVariables, query: string}, PostsConnectionQueryVariables>(PostsConnectionDocument, variables, options);
+    projectsConnection(variables?: ProjectsConnectionQueryVariables, options?: C): Promise<{data: ProjectsConnectionQuery, variables: ProjectsConnectionQueryVariables, query: string}> {
+        return requester<{data: ProjectsConnectionQuery, variables: ProjectsConnectionQueryVariables, query: string}, ProjectsConnectionQueryVariables>(ProjectsConnectionDocument, variables, options);
       }
     };
   }

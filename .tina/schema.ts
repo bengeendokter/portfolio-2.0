@@ -4,9 +4,9 @@ import { defineSchema, defineConfig } from "tinacms";
 const schema = defineSchema({
   collections: [
     {
-      label: "Blog Posts",
-      name: "posts",
-      path: "content/posts",
+      label: "Project Posts",
+      name: "projects",
+      path: "content/projects",
       fields: [
         {
           type: "string",
@@ -20,7 +20,7 @@ const schema = defineSchema({
         },
         {
           type: "rich-text",
-          label: "Blog Post Body",
+          label: "Project Post Body",
           name: "body",
           isBody: true,
           templates: [
