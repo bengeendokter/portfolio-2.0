@@ -79,7 +79,11 @@ union DocumentNode = Projects
 
 type Projects implements Node & Document {
   title: String
+  tags: [String]
   description: String
+  imgAlt: String
+  imgSrc: String
+  github: String
   body: JSON
   id: ID!
   _sys: SystemInfo!
@@ -112,7 +116,11 @@ input DocumentMutation {
 
 input ProjectsMutation {
   title: String
+  tags: [String]
   description: String
+  imgAlt: String
+  imgSrc: String
+  github: String
   body: JSON
 }
 

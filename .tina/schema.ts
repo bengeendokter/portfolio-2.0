@@ -15,8 +15,29 @@ const schema = defineSchema({
         },
         {
           type: "string",
+          label: "Tags",
+          name: "tags",
+          list: true,
+        },
+        {
+          type: "string",
           label: "Description",
           name: "description",
+        },
+        {
+          type: "string",
+          label: "Imgage Alt",
+          name: "imgAlt",
+        },
+        {
+          type: "string",
+          label: "Imgage Src",
+          name: "imgSrc",
+        },
+        {
+          type: "string",
+          label: "Github",
+          name: "github",
         },
         {
           type: "rich-text",

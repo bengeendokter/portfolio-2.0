@@ -152,7 +152,11 @@ export type DocumentNode = Projects;
 export type Projects = Node & Document & {
   __typename?: 'Projects';
   title?: Maybe<Scalars['String']>;
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   description?: Maybe<Scalars['String']>;
+  imgAlt?: Maybe<Scalars['String']>;
+  imgSrc?: Maybe<Scalars['String']>;
+  github?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['JSON']>;
   id: Scalars['ID'];
   _sys: SystemInfo;
@@ -227,18 +231,22 @@ export type DocumentMutation = {
 
 export type ProjectsMutation = {
   title?: InputMaybe<Scalars['String']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   description?: InputMaybe<Scalars['String']>;
+  imgAlt?: InputMaybe<Scalars['String']>;
+  imgSrc?: InputMaybe<Scalars['String']>;
+  github?: InputMaybe<Scalars['String']>;
   body?: InputMaybe<Scalars['JSON']>;
 };
 
-export type ProjectsPartsFragment = { __typename?: 'Projects', title?: string | null, description?: string | null, body?: any | null };
+export type ProjectsPartsFragment = { __typename?: 'Projects', title?: string | null, tags?: Array<string | null> | null, description?: string | null, imgAlt?: string | null, imgSrc?: string | null, github?: string | null, body?: any | null };
 
 export type ProjectsQueryVariables = Exact<{
   relativePath: Scalars['String'];
 }>;
 
 
-export type ProjectsQuery = { __typename?: 'Query', projects: { __typename?: 'Projects', id: string, title?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type ProjectsQuery = { __typename?: 'Query', projects: { __typename?: 'Projects', id: string, title?: string | null, tags?: Array<string | null> | null, description?: string | null, imgAlt?: string | null, imgSrc?: string | null, github?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type ProjectsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']>;
@@ -249,12 +257,16 @@ export type ProjectsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type ProjectsConnectionQuery = { __typename?: 'Query', projectsConnection: { __typename?: 'ProjectsConnection', totalCount: number, edges?: Array<{ __typename?: 'ProjectsConnectionEdges', node?: { __typename?: 'Projects', id: string, title?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type ProjectsConnectionQuery = { __typename?: 'Query', projectsConnection: { __typename?: 'ProjectsConnection', totalCount: number, edges?: Array<{ __typename?: 'ProjectsConnectionEdges', node?: { __typename?: 'Projects', id: string, title?: string | null, tags?: Array<string | null> | null, description?: string | null, imgAlt?: string | null, imgSrc?: string | null, github?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const ProjectsPartsFragmentDoc = gql`
     fragment ProjectsParts on Projects {
   title
+  tags
   description
+  imgAlt
+  imgSrc
+  github
   body
 }
     `;

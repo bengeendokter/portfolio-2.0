@@ -1,5 +1,9 @@
 fragment ProjectsParts on Projects {
   title
+  tags
   description
+  imgAlt
+  imgSrc
+  github
   body
 }
