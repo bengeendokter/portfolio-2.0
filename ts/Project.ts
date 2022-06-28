@@ -1,0 +1,1 @@
+export default interface Project { title : string, description : string, _sys: {breadcrumbs : Array<string>}}

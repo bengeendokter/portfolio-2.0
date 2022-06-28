@@ -1,0 +1,5 @@
+fragment PostsParts on Posts {
+  title
+  description
+  body
+}
