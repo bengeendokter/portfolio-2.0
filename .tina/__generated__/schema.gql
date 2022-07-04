@@ -81,10 +81,12 @@ union DocumentNode = Pages | Projects
 
 type Pages implements Node & Document {
   subtitle: String
+  skip_nav: String
   projects_heading: String
   cv_heading: String
   dowload_cv_label: String
   copyright: String
+  intro: JSON
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -143,10 +145,12 @@ input DocumentMutation {
 
 input PagesMutation {
   subtitle: String
+  skip_nav: String
   projects_heading: String
   cv_heading: String
   dowload_cv_label: String
   copyright: String
+  intro: JSON
 }
 
 input ProjectsMutation {

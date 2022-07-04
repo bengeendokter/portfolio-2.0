@@ -168,10 +168,12 @@ export type DocumentNode = Pages | Projects;
 export type Pages = Node & Document & {
   __typename?: 'Pages';
   subtitle?: Maybe<Scalars['String']>;
+  skip_nav?: Maybe<Scalars['String']>;
   projects_heading?: Maybe<Scalars['String']>;
   cv_heading?: Maybe<Scalars['String']>;
   dowload_cv_label?: Maybe<Scalars['String']>;
   copyright?: Maybe<Scalars['String']>;
+  intro?: Maybe<Scalars['JSON']>;
   id: Scalars['ID'];
   _sys: SystemInfo;
   _values: Scalars['JSON'];
@@ -287,10 +289,12 @@ export type DocumentMutation = {
 
 export type PagesMutation = {
   subtitle?: InputMaybe<Scalars['String']>;
+  skip_nav?: InputMaybe<Scalars['String']>;
   projects_heading?: InputMaybe<Scalars['String']>;
   cv_heading?: InputMaybe<Scalars['String']>;
   dowload_cv_label?: InputMaybe<Scalars['String']>;
   copyright?: InputMaybe<Scalars['String']>;
+  intro?: InputMaybe<Scalars['JSON']>;
 };
 
 export type ProjectsMutation = {
@@ -303,7 +307,7 @@ export type ProjectsMutation = {
   body?: InputMaybe<Scalars['JSON']>;
 };
 
-export type PagesPartsFragment = { __typename?: 'Pages', subtitle?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null };
+export type PagesPartsFragment = { __typename?: 'Pages', subtitle?: string | null, skip_nav?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, intro?: any | null };
 
 export type ProjectsPartsFragment = { __typename?: 'Projects', title?: string | null, tags?: Array<string | null> | null, description?: string | null, imgAlt?: string | null, imgSrc?: string | null, github?: string | null, body?: any | null };
 
@@ -312,7 +316,7 @@ export type PagesQueryVariables = Exact<{
 }>;
 
 
-export type PagesQuery = { __typename?: 'Query', pages: { __typename?: 'Pages', id: string, subtitle?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type PagesQuery = { __typename?: 'Query', pages: { __typename?: 'Pages', id: string, subtitle?: string | null, skip_nav?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type PagesConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']>;
@@ -323,7 +327,7 @@ export type PagesConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PagesConnectionQuery = { __typename?: 'Query', pagesConnection: { __typename?: 'PagesConnection', totalCount: number, edges?: Array<{ __typename?: 'PagesConnectionEdges', node?: { __typename?: 'Pages', id: string, subtitle?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type PagesConnectionQuery = { __typename?: 'Query', pagesConnection: { __typename?: 'PagesConnection', totalCount: number, edges?: Array<{ __typename?: 'PagesConnectionEdges', node?: { __typename?: 'Pages', id: string, subtitle?: string | null, skip_nav?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type ProjectsQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -346,10 +350,12 @@ export type ProjectsConnectionQuery = { __typename?: 'Query', projectsConnection
 export const PagesPartsFragmentDoc = gql`
     fragment PagesParts on Pages {
   subtitle
+  skip_nav
   projects_heading
   cv_heading
   dowload_cv_label
   copyright
+  intro
 }
     `;
 export const ProjectsPartsFragmentDoc = gql`

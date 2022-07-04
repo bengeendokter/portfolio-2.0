@@ -7,16 +7,18 @@ import GithubSVG from '@components/SVGIcons/github.svg';
 import createRSS from '@utils/createRSS';
 import ProjectNode from '@ts/ProjectNode'
 import { useTina } from "tinacms/dist/edit-state";
+import { TinaMarkdown } from 'tinacms/dist/rich-text'
 
 const homeQuery = gql`
   query HomePageQuery($relativePath: String!) {
   pages(relativePath: $relativePath) {
     subtitle
+    intro
+    skip_nav
     projects_heading
     cv_heading
     dowload_cv_label
     copyright
-    _values
   }
 }`
 
@@ -63,7 +65,7 @@ export default function Home(props: { variables: any, data: any, locale: string,
   return (
     <>
       <header>
-        <a className={styles.skip_nav} href="#main-content">Navigatie overslaan</a>
+        <a className={styles.skip_nav} href="#main-content">{homeData.skip_nav}</a>
         <nav>
           <ul>
             <li><a href="#projecten">{homeData.projects_heading}</a></li>
@@ -77,18 +79,17 @@ export default function Home(props: { variables: any, data: any, locale: string,
           <div className={styles.intro_info}>
             <h1 className={styles.naam}>Ben Arts</h1>
             <p className={styles.geendokter}>{homeData.subtitle}</p>
-            <p className={styles.intro_text}>Hallo ik ben Ben,
-              een tweedejaars student bachelor toegepaste informatica en dit is mijn portfolio.
-              Hieronder vinden jullie mijn projecten en CV.
-            </p>
+            <div className={styles.intro_text}><TinaMarkdown content={homeData.intro} />
+            </div>
+            
           </div>
         </section>
         <section aria-labelledby='projecten-title' id='projecten' className={styles.projecten}>
-          <h2 id='projecten-title'>Projecten</h2>
+          <h2 id='projecten-title'>{homeData.projects_heading}</h2>
           {projects.map((project, i: number) => <ProjectPreview key={i} {...project} />)}
         </section>
         <section aria-labelledby='CV-title' id='CV' className={styles.CV}>
-          <h2 id='CV-title'>CV</h2>
+          <h2 id='CV-title'>{homeData.cv_heading}</h2>
           <CV />
           <a className={styles.download_button} href="./assets/documenten/BenArtsCV.pdf" download="BenArtsCV">Download CV</a>
         </section>

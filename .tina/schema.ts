@@ -15,6 +15,11 @@ const schema = defineSchema({
         },
         {
           type: "string",
+          label: "Skip Nav",
+          name: "skip_nav",
+        },
+        {
+          type: "string",
           label: "Projects heading",
           name: "projects_heading",
         },
@@ -33,6 +38,12 @@ const schema = defineSchema({
           label: "Copyright",
           name: "copyright",
         },
+        {
+          type: "rich-text",
+          label: "Intro",
+          name: "intro",
+          isBody: true,
+        }
       ],
     },
     {
@@ -119,24 +130,28 @@ const apiURL =
 
 export const tinaConfig = defineConfig({
   apiURL,
-  mediaStore: async () => {
-       // Load media store dynamically so it only loads in edit mode
-       const pack = await import("next-tinacms-cloudinary");
-       return pack.TinaCloudCloudinaryMediaStore;
-     },
+  mediaStore: async () =>
+  {
+    // Load media store dynamically so it only loads in edit mode
+    const pack = await import("next-tinacms-cloudinary");
+    return pack.TinaCloudCloudinaryMediaStore;
+  },
   schema,
-  cmsCallback: (cms) => {
+  cmsCallback: (cms) =>
+  {
     //  add your CMS callback code here (if you want)
 
     // The Route Mapper
     /**
      * 1. Import `tinacms` and `RouteMappingPlugin`
      **/
-    import("tinacms").then(({ RouteMappingPlugin }) => {
+    import("tinacms").then(({ RouteMappingPlugin }) =>
+    {
       /**
        * 2. Define the `RouteMappingPlugin` see https://tina.io/docs/tinacms-context/#the-routemappingplugin for more details
        **/
-      const RouteMapping = new RouteMappingPlugin((collection, document) => {
+      const RouteMapping = new RouteMappingPlugin((collection, document) =>
+      {
         return undefined;
       });
       /**

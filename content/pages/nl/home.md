@@ -1,7 +1,9 @@
 ---
+skip_nav: "Navigatie overslaan"
 subtitle: "geen dokter"
-projects_heading: "projecten"
+projects_heading: "Projecten"
 cv_heading: "CV"
 dowload_cv_label: "Download CV"
 copyright: "Alle rechten voorbehouden"
 ---
+Hallo ik ben Ben, een tweedejaars student bachelor toegepaste informatica en dit is mijn portfolio. Hieronder vinden jullie mijn projecten en CV.
