@@ -8,7 +8,17 @@ import createRSS from '@utils/createRSS';
 import ProjectNode from '@ts/ProjectNode'
 import { useTina } from "tinacms/dist/edit-state";
 
-
+const homeQuery = gql`
+  query HomePageQuery($relativePath: String!) {
+  pages(relativePath: $relativePath) {
+    subtitle
+    projects_heading
+    cv_heading
+    dowload_cv_label
+    copyright
+    _values
+  }
+}`
 
 const query = gql`{
   projectsConnection{
@@ -31,19 +41,22 @@ const query = gql`{
   }
 }}`
 
-export default function Home(props: { variables: any, data: any, locale : string })
+export default function Home(props: { variables: any, data: any, locale: string, homeData: any, homeVariables: any })
 {
-  const { data } = useTina({
-    query,
-    variables: props.variables,
-    data: props.data,
+  const data = props.data;
+
+  const { data: {pages: homeData} } = useTina({
+    query: homeQuery,
+    variables: props.homeVariables,
+    data: props.homeData,
   });
 
   const projects: Array<ProjectNode> = data.projectsConnection.edges
-  .map(({ node }: { node: ProjectNode }) => node)
-  .filter((project : ProjectNode) => project._sys.breadcrumbs[0] == props.locale);
+    .map(({ node }: { node: ProjectNode }) => node)
+    .filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);
 
   console.log(projects)
+  console.log(homeData)
   console.log(props.locale)
 
 
@@ -53,8 +66,8 @@ export default function Home(props: { variables: any, data: any, locale : string
         <a className={styles.skip_nav} href="#main-content">Navigatie overslaan</a>
         <nav>
           <ul>
-            <li><a href="#projecten">Projecten</a></li>
-            <li><a href="#CV">CV</a></li>
+            <li><a href="#projecten">{homeData.projects_heading}</a></li>
+            <li><a href="#CV">{homeData.cv_heading}</a></li>
           </ul>
         </nav>
       </header>
@@ -63,7 +76,7 @@ export default function Home(props: { variables: any, data: any, locale : string
           <img src="./assets/images/PF.jpg" width="300" height="300" alt="foto van mezelf" className={styles.PF} />
           <div className={styles.intro_info}>
             <h1 className={styles.naam}>Ben Arts</h1>
-            <p className={styles.geendokter}>geen dokter</p>
+            <p className={styles.geendokter}>{homeData.subtitle}</p>
             <p className={styles.intro_text}>Hallo ik ben Ben,
               een tweedejaars student bachelor toegepaste informatica en dit is mijn portfolio.
               Hieronder vinden jullie mijn projecten en CV.
@@ -88,15 +101,29 @@ export default function Home(props: { variables: any, data: any, locale : string
           {/* <ExtLink href='https://linkedin.com' aria-label="LinkedIn" ><LinkedinSVG className='svg-icon' /></ExtLink> */}
         </aside>
         <small>
-          Copyright &copy; {new Date().getFullYear()}, Ben Arts<br /> Alle rechten voorbehouden
+          Copyright &copy; {new Date().getFullYear()}, Ben Arts<br /> {homeData.copyright}
         </small>
       </footer>
     </>
   )
 }
 
-export const getStaticProps = async ({ locales, locale }: { locales: Array<string>, locale : string }) =>
+export const getStaticProps = async ({ locales, locale }: { locales: Array<string>, locale: string }) =>
 {
+  // home content ophalen
+  const homeVariables = { relativePath: `${locale}/home.md` }
+  let homeData: any = {}
+  try
+  {
+    homeData = await staticRequest({
+      query: homeQuery,
+      variables: homeVariables,
+    })
+  } catch {
+    // swallow errors related to document creation
+  }
+
+  // posts ophalen
   const variables = {}
   let data: any = {}
   try
@@ -116,6 +143,8 @@ export const getStaticProps = async ({ locales, locale }: { locales: Array<strin
     props: {
       variables,
       data,
+      homeData,
+      homeVariables,
       locale,
     },
   }

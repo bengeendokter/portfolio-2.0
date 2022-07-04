@@ -1,3 +1,11 @@
+fragment PagesParts on Pages {
+  subtitle
+  projects_heading
+  cv_heading
+  dowload_cv_label
+  copyright
+}
+
 fragment ProjectsParts on Projects {
   title
   tags

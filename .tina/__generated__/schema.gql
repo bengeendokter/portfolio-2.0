@@ -48,6 +48,8 @@ type Query {
   collections: [Collection!]!
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
+  pages(relativePath: String): Pages!
+  pagesConnection(before: String, after: String, first: Float, last: Float, sort: String): PagesConnection!
   projects(relativePath: String): Projects!
   projectsConnection(before: String, after: String, first: Float, last: Float, sort: String): ProjectsConnection!
 }
@@ -75,7 +77,29 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String): DocumentConnection!
 }
 
-union DocumentNode = Projects
+union DocumentNode = Pages | Projects
+
+type Pages implements Node & Document {
+  subtitle: String
+  projects_heading: String
+  cv_heading: String
+  dowload_cv_label: String
+  copyright: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+type PagesConnectionEdges {
+  cursor: String!
+  node: Pages
+}
+
+type PagesConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [PagesConnectionEdges]
+}
 
 type Projects implements Node & Document {
   title: String
@@ -106,12 +130,23 @@ type Mutation {
   updateDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
+  updatePages(relativePath: String!, params: PagesMutation!): Pages!
+  createPages(relativePath: String!, params: PagesMutation!): Pages!
   updateProjects(relativePath: String!, params: ProjectsMutation!): Projects!
   createProjects(relativePath: String!, params: ProjectsMutation!): Projects!
 }
 
 input DocumentMutation {
+  pages: PagesMutation
   projects: ProjectsMutation
+}
+
+input PagesMutation {
+  subtitle: String
+  projects_heading: String
+  cv_heading: String
+  dowload_cv_label: String
+  copyright: String
 }
 
 input ProjectsMutation {

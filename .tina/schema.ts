@@ -4,6 +4,38 @@ import { defineSchema, defineConfig } from "tinacms";
 const schema = defineSchema({
   collections: [
     {
+      label: "Pages",
+      name: "pages",
+      path: "content/pages",
+      fields: [
+        {
+          type: "string",
+          label: "Subtitle",
+          name: "subtitle",
+        },
+        {
+          type: "string",
+          label: "Projects heading",
+          name: "projects_heading",
+        },
+        {
+          type: "string",
+          label: "CV heading",
+          name: "cv_heading",
+        },
+        {
+          type: "string",
+          label: "Dowload CV label",
+          name: "dowload_cv_label",
+        },
+        {
+          type: "string",
+          label: "Copyright",
+          name: "copyright",
+        },
+      ],
+    },
+    {
       label: "Project Posts",
       name: "projects",
       path: "content/projects",

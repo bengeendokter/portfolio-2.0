@@ -73,6 +73,8 @@ export type Query = {
   collections: Array<Collection>;
   node: Node;
   document: DocumentNode;
+  pages: Pages;
+  pagesConnection: PagesConnection;
   projects: Projects;
   projectsConnection: ProjectsConnection;
 };
@@ -96,6 +98,20 @@ export type QueryNodeArgs = {
 export type QueryDocumentArgs = {
   collection?: InputMaybe<Scalars['String']>;
   relativePath?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryPagesArgs = {
+  relativePath?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryPagesConnectionArgs = {
+  before?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Float']>;
+  last?: InputMaybe<Scalars['Float']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -147,7 +163,32 @@ export type CollectionDocumentsArgs = {
   sort?: InputMaybe<Scalars['String']>;
 };
 
-export type DocumentNode = Projects;
+export type DocumentNode = Pages | Projects;
+
+export type Pages = Node & Document & {
+  __typename?: 'Pages';
+  subtitle?: Maybe<Scalars['String']>;
+  projects_heading?: Maybe<Scalars['String']>;
+  cv_heading?: Maybe<Scalars['String']>;
+  dowload_cv_label?: Maybe<Scalars['String']>;
+  copyright?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON'];
+};
+
+export type PagesConnectionEdges = {
+  __typename?: 'PagesConnectionEdges';
+  cursor: Scalars['String'];
+  node?: Maybe<Pages>;
+};
+
+export type PagesConnection = Connection & {
+  __typename?: 'PagesConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float'];
+  edges?: Maybe<Array<Maybe<PagesConnectionEdges>>>;
+};
 
 export type Projects = Node & Document & {
   __typename?: 'Projects';
@@ -182,6 +223,8 @@ export type Mutation = {
   updateDocument: DocumentNode;
   deleteDocument: DocumentNode;
   createDocument: DocumentNode;
+  updatePages: Pages;
+  createPages: Pages;
   updateProjects: Projects;
   createProjects: Projects;
 };
@@ -214,6 +257,18 @@ export type MutationCreateDocumentArgs = {
 };
 
 
+export type MutationUpdatePagesArgs = {
+  relativePath: Scalars['String'];
+  params: PagesMutation;
+};
+
+
+export type MutationCreatePagesArgs = {
+  relativePath: Scalars['String'];
+  params: PagesMutation;
+};
+
+
 export type MutationUpdateProjectsArgs = {
   relativePath: Scalars['String'];
   params: ProjectsMutation;
@@ -226,7 +281,16 @@ export type MutationCreateProjectsArgs = {
 };
 
 export type DocumentMutation = {
+  pages?: InputMaybe<PagesMutation>;
   projects?: InputMaybe<ProjectsMutation>;
+};
+
+export type PagesMutation = {
+  subtitle?: InputMaybe<Scalars['String']>;
+  projects_heading?: InputMaybe<Scalars['String']>;
+  cv_heading?: InputMaybe<Scalars['String']>;
+  dowload_cv_label?: InputMaybe<Scalars['String']>;
+  copyright?: InputMaybe<Scalars['String']>;
 };
 
 export type ProjectsMutation = {
@@ -239,7 +303,27 @@ export type ProjectsMutation = {
   body?: InputMaybe<Scalars['JSON']>;
 };
 
+export type PagesPartsFragment = { __typename?: 'Pages', subtitle?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null };
+
 export type ProjectsPartsFragment = { __typename?: 'Projects', title?: string | null, tags?: Array<string | null> | null, description?: string | null, imgAlt?: string | null, imgSrc?: string | null, github?: string | null, body?: any | null };
+
+export type PagesQueryVariables = Exact<{
+  relativePath: Scalars['String'];
+}>;
+
+
+export type PagesQuery = { __typename?: 'Query', pages: { __typename?: 'Pages', id: string, subtitle?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type PagesConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Float']>;
+  last?: InputMaybe<Scalars['Float']>;
+  sort?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type PagesConnectionQuery = { __typename?: 'Query', pagesConnection: { __typename?: 'PagesConnection', totalCount: number, edges?: Array<{ __typename?: 'PagesConnectionEdges', node?: { __typename?: 'Pages', id: string, subtitle?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type ProjectsQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -259,6 +343,15 @@ export type ProjectsConnectionQueryVariables = Exact<{
 
 export type ProjectsConnectionQuery = { __typename?: 'Query', projectsConnection: { __typename?: 'ProjectsConnection', totalCount: number, edges?: Array<{ __typename?: 'ProjectsConnectionEdges', node?: { __typename?: 'Projects', id: string, title?: string | null, tags?: Array<string | null> | null, description?: string | null, imgAlt?: string | null, imgSrc?: string | null, github?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
+export const PagesPartsFragmentDoc = gql`
+    fragment PagesParts on Pages {
+  subtitle
+  projects_heading
+  cv_heading
+  dowload_cv_label
+  copyright
+}
+    `;
 export const ProjectsPartsFragmentDoc = gql`
     fragment ProjectsParts on Projects {
   title
@@ -270,6 +363,53 @@ export const ProjectsPartsFragmentDoc = gql`
   body
 }
     `;
+export const PagesDocument = gql`
+    query pages($relativePath: String!) {
+  pages(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PagesParts
+  }
+}
+    ${PagesPartsFragmentDoc}`;
+export const PagesConnectionDocument = gql`
+    query pagesConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String) {
+  pagesConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+  ) {
+    totalCount
+    edges {
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...PagesParts
+      }
+    }
+  }
+}
+    ${PagesPartsFragmentDoc}`;
 export const ProjectsDocument = gql`
     query projects($relativePath: String!) {
   projects(relativePath: $relativePath) {
@@ -320,7 +460,13 @@ export const ProjectsConnectionDocument = gql`
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
-      projects(variables: ProjectsQueryVariables, options?: C): Promise<{data: ProjectsQuery, variables: ProjectsQueryVariables, query: string}> {
+      pages(variables: PagesQueryVariables, options?: C): Promise<{data: PagesQuery, variables: PagesQueryVariables, query: string}> {
+        return requester<{data: PagesQuery, variables: PagesQueryVariables, query: string}, PagesQueryVariables>(PagesDocument, variables, options);
+      },
+    pagesConnection(variables?: PagesConnectionQueryVariables, options?: C): Promise<{data: PagesConnectionQuery, variables: PagesConnectionQueryVariables, query: string}> {
+        return requester<{data: PagesConnectionQuery, variables: PagesConnectionQueryVariables, query: string}, PagesConnectionQueryVariables>(PagesConnectionDocument, variables, options);
+      },
+    projects(variables: ProjectsQueryVariables, options?: C): Promise<{data: ProjectsQuery, variables: ProjectsQueryVariables, query: string}> {
         return requester<{data: ProjectsQuery, variables: ProjectsQueryVariables, query: string}, ProjectsQueryVariables>(ProjectsDocument, variables, options);
       },
     projectsConnection(variables?: ProjectsConnectionQueryVariables, options?: C): Promise<{data: ProjectsConnectionQuery, variables: ProjectsConnectionQueryVariables, query: string}> {
