@@ -7,7 +7,6 @@ import GithubSVG from '@components/SVGIcons/github.svg';
 import createRSS from '@utils/createRSS';
 import ProjectNode from '@ts/ProjectNode'
 import { useTina } from "tinacms/dist/edit-state";
-import Project from '@ts/Project';
 
 
 
