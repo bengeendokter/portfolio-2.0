@@ -73,7 +73,7 @@ const schema = defineSchema({
           name: "imgAlt",
         },
         {
-          type: "string",
+          type: 'image',
           label: "Imgage Src",
           name: "imgSrc",
         },
