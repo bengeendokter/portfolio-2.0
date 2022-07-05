@@ -57,10 +57,6 @@ export default function Home(props: { variables: any, data: any, locale: string,
     .map(({ node }: { node: ProjectNode }) => node)
     .filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);
 
-  console.log(projects)
-  console.log(homeData)
-  console.log(props.locale)
-
 
   return (
     <>

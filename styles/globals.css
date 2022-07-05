@@ -135,6 +135,7 @@ small
   display: grid;
   justify-content: center;
   margin-block: 1.1em;
+  text-align: center;
 }
 
 /* andere */
