@@ -6,4 +6,4 @@ cv_heading: "CV"
 dowload_cv_label: "Download CV"
 copyright: "Alle rechten voorbehouden"
 ---
-Hallo ik ben Ben, een tweedejaars student bachelor toegepaste informatica en dit is mijn portfolio. Hieronder vinden jullie mijn projecten en CV.
+Hallo ik ben Ben, een student bachelor toegepaste informatica en dit is mijn portfolio. Hieronder vinden jullie mijn projecten en CV.
