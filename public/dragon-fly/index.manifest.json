@@ -5,6 +5,7 @@
     "name": "Dragon, fly!",
     "short_name": "Dragon, fly!",
     "description": "Video game made with the Godot game engine.",
+    "lang": "en",
     "categories": ["games"],
     "orientation": "landscape",
     "start_url": "./index.html",
