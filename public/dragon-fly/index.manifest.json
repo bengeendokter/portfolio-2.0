@@ -1,8 +1,11 @@
 {
-    "background_color": "#000000",
+    "background_color": "#222034",
+    "theme_color": "#407d52",
     "display": "standalone",
     "name": "Dragon, fly!",
     "short_name": "Dragon, fly!",
+    "description": "Video game made with the Godot game engine.",
+    "categories": ["games"],
     "orientation": "landscape",
     "start_url": "./index.html",
     "icons": [
@@ -19,7 +22,8 @@
         {
             "sizes": "512x512",
             "src": "index.512x512.png",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ]
 }
