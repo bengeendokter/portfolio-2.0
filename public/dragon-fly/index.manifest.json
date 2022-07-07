@@ -1,12 +1,14 @@
 {
     "background_color": "#222034",
     "theme_color": "#407d52",
-    "display": "standalone",
+    "display": "fullscreen",
     "name": "Dragon, fly!",
     "short_name": "Dragon, fly!",
     "description": "Video game made with the Godot game engine.",
     "lang": "en",
-    "categories": ["games"],
+    "categories": [
+        "games"
+    ],
     "orientation": "landscape",
     "start_url": "./index.html",
     "icons": [
@@ -25,6 +27,26 @@
             "src": "index.512x512.png",
             "type": "image/png",
             "purpose": "maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "screenshot_1.png",
+            "sizes": "1280x640",
+            "type": "image/png",
+            "label": "Normal gameplay"
+        },
+        {
+            "src": "screenshot_2.png",
+            "sizes": "1280x640",
+            "type": "image/png",
+            "label": "Player's dragon just getting hit"
+        },
+        {
+            "src": "screenshot_3.png",
+            "sizes": "1280x640",
+            "type": "image/png",
+            "label": "Player's dragon exploading"
         }
     ]
 }
