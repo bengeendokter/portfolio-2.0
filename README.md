@@ -1,5 +1,5 @@
 # Portfolio site with Tina CMS
-[![Netlify Status](https://api.netlify.com/api/v1/badges/362a5275-1e14-44f9-9f49-a03307e0636d/deploy-status)](https://app.netlify.com/sites/portfolio-tinacms/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ef1a278c-5dfa-4d88-952e-e13430735999/deploy-status)](https://app.netlify.com/sites/bengeendokter/deploys)
 
 This example uses [`next-pwa`](https://github.com/shadowwalker/next-pwa) to create a progressive web app (PWA) powered by [Workbox](https://developers.google.com/web/tools/workbox/).
 
