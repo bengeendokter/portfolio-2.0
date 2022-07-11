@@ -1,6 +1,0 @@
-[{
-        "relation": ["delegate_permission/common.handle_all_urls"],
-        "target" : { "namespace": "android_app", "package_name": "be.bengeendokter.twa",
-                     "sha256_cert_fingerprints": ["58:A7:5A:A9:E7:10:65:29:53:FC:9A:D6:28:7D:E1:9A:64:F7:E4:2B:26:AA:16:FF:9A:5C:D4:36:49:EA:03:66", "8E:30:E2:BB:A6:8C:E2:F3:1C:2E:2E:F9:E2:F8:E5:41:AD:2F:81:85:5B:B3:8D:85:ED:EB:5A:54:94:D8:25:9D"] }
-      }
-]
