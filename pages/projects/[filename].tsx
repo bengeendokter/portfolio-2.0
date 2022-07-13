@@ -7,6 +7,7 @@ import { createGlobalStyle } from "styled-components";
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 import Path from "@ts/Path"
+import NavHeader from '@components/NavHeader';
 
 const query = gql`
     query ProjectPostQuery($relativePath: String!) {
@@ -64,6 +65,10 @@ const BlogPage = (props: { variables: any, data: any }) =>
       <Head>
         <title>{data.projects.title}</title>
       </Head>
+      <header>
+        {/* TODO remove hardcoded strings */}
+        <NavHeader homeData={{skip_nav : "skip_nav", projects_heading : "Projects", cv_heading : "CV"}}></NavHeader>
+      </header>
       <ContentSection
         content={data.projects.body}
       ></ContentSection>
