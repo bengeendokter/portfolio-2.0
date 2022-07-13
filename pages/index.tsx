@@ -2,6 +2,7 @@ import { staticRequest, gql } from "tinacms";
 import ExtLink from '@components/ExtLink';
 import CV from '@components/CV';
 import ProjectPreview from '@components/ProjectPreview';
+import NavHeader from '@components/NavHeader';
 import styles from '@styles/Home.module.css';
 import GithubSVG from '@components/SVGIcons/github.svg';
 import createRSS from '@utils/createRSS';
@@ -61,13 +62,7 @@ export default function Home(props: { variables: any, data: any, locale: string,
   return (
     <>
       <header>
-        <a className={styles.skip_nav} href="#main-content">{homeData.skip_nav}</a>
-        <nav>
-          <ul>
-            <li><a href="#projecten">{homeData.projects_heading}</a></li>
-            <li><a href="#CV">{homeData.cv_heading}</a></li>
-          </ul>
-        </nav>
+        <NavHeader homeData={homeData}></NavHeader>
       </header>
       <main id='main-content'>
         <section className={styles.intro} aria-label='intro'>
