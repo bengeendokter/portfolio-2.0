@@ -5,6 +5,7 @@ import ProjectPreview from '@components/ProjectPreview';
 import NavHeader from '@components/NavHeader';
 import styles from '@styles/Home.module.css';
 import GithubSVG from '@components/SVGIcons/github.svg';
+import LinkedinSVG from '@components/SVGIcons/linkedin.svg';
 import createRSS from '@utils/createRSS';
 import ProjectNode from '@ts/ProjectNode'
 import { useTina } from "tinacms/dist/edit-state";
@@ -82,7 +83,7 @@ export default function Home(props: { variables: any, data: any, locale: string,
         <section aria-labelledby='CV-title' id='CV' className={styles.CV}>
           <h2 id='CV-title'>{homeData.cv_heading}</h2>
           <CV />
-          <a className={styles.download_button} href="./assets/documenten/BenArtsCV.pdf" download="BenArtsCV">Download CV</a>
+          <a className={styles.download_button} href="./assets/documents/BenArtsCV.pdf" download="BenArtsCV">Download CV</a>
         </section>
       </main>
       <footer>
@@ -90,7 +91,9 @@ export default function Home(props: { variables: any, data: any, locale: string,
           <ExtLink href='https://github.com/bengeendokter' aria-label="GitHub" >
             <GithubSVG />
           </ExtLink>
-          {/* <ExtLink href='https://linkedin.com' aria-label="LinkedIn" ><LinkedinSVG className='svg-icon' /></ExtLink> */}
+          <ExtLink href='https://www.linkedin.com/in/bengeendokter' aria-label="LinkedIn" >
+            <LinkedinSVG />
+          </ExtLink>
         </aside>
         <small>
           Copyright &copy; {new Date().getFullYear()}, Ben Arts<br /> {homeData.copyright}
