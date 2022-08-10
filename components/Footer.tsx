@@ -8,7 +8,7 @@ export default function Footer({homeData} : {homeData: {copyright : string}})
 {
     return (
         <>
-            <footer>
+            <footer className={styles.footer}>
                 <aside className={styles.ext_link}>
                     <ExtLink href='https://github.com/bengeendokter' aria-label="GitHub" >
                         <GithubSVG />

@@ -8,6 +8,7 @@ import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 import Path from "@ts/Path"
 import NavHeader from '@components/NavHeader';
+import Footer from '@components/Footer';
 
 const query = gql`
     query ProjectPostQuery($relativePath: String!) {
@@ -72,6 +73,10 @@ const BlogPage = (props: { variables: any, data: any }) =>
       <ContentSection
         content={data.projects.body}
       ></ContentSection>
+      {/* TODO remove hardcoded strings */}
+      <Footer homeData={{
+        copyright: "Alle rechten voorbehouden"
+      }}></Footer>
     </>
   );
 };

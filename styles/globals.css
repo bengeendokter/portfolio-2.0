@@ -70,6 +70,14 @@ html
   scroll-behavior: smooth;
 }
 
+/* footer */
+div:has( > footer)
+{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 /* andere */
 svg
 {
