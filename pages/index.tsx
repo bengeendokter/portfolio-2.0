@@ -1,13 +1,11 @@
 import { staticRequest, gql } from "tinacms";
-import ExtLink from '@components/ExtLink';
 import CV from '@components/CV';
 import ProjectPreview from '@components/ProjectPreview';
 import NavHeader from '@components/NavHeader';
+import Footer from '@components/Footer';
 import styles from '@styles/Home.module.css';
-import GithubSVG from '@components/SVGIcons/github.svg';
-import LinkedinSVG from '@components/SVGIcons/linkedin.svg';
 import createRSS from '@utils/createRSS';
-import ProjectNode from '@ts/ProjectNode'
+import ProjectNode from '@ts/ProjectNode';
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 
@@ -86,19 +84,7 @@ export default function Home(props: { variables: any, data: any, locale: string,
           <a className={styles.download_button} href="./assets/documents/BenArtsCV.pdf" download="BenArtsCV">Download CV</a>
         </section>
       </main>
-      <footer>
-        <aside>
-          <ExtLink href='https://github.com/bengeendokter' aria-label="GitHub" >
-            <GithubSVG />
-          </ExtLink>
-          <ExtLink href='https://www.linkedin.com/in/bengeendokter' aria-label="LinkedIn" >
-            <LinkedinSVG />
-          </ExtLink>
-        </aside>
-        <small>
-          Copyright &copy; {new Date().getFullYear()}, Ben Arts<br /> {homeData.copyright}
-        </small>
-      </footer>
+      <Footer homeData={homeData}></Footer>
     </>
   )
 }

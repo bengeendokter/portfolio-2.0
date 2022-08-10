@@ -70,27 +70,6 @@ html
   scroll-behavior: smooth;
 }
 
-/* footer */
-aside
-{
-  display: grid;
-  grid-auto-flow: column;
-  justify-content: center;
-  margin-block: 1em;
-  grid-gap: clamp(3.9em, 9vw, 16em);
-  align-items: center;
-}
-
-small
-{
-  color: var(--clr-text);
-  width: 100%;
-  display: grid;
-  justify-content: center;
-  margin-block: 1.1em;
-  text-align: center;
-}
-
 /* andere */
 svg
 {
