@@ -1,6 +1,7 @@
 .footer
 {
   margin-top: auto;
+  border-top: 2.1px solid var(--clr-text);
 }
 
 .ext_link
