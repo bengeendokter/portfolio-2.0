@@ -66,10 +66,4 @@
   {
     margin-inline: 9em;
   }
-
-  .main p, .main ul
-  {
-    align-self: center;
-    text-align: center;
-  }
 }
