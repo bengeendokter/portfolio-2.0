@@ -6,16 +6,19 @@
     border-radius: 16px;
     display: inline-flex;
     gap: 0.4em;
-    padding: 0.5em;
+    padding-inline: 0.3em;
+    padding-block: 0.4em;
     align-items: center;
     margin-block: 0.4em;
+    margin-left: auto;
+    margin-right: auto;
+    justify-self: center;
 }
 
 .ext_btn svg
 {
     fill: var(--clr-text);
-    height: 1.1rem;
-    width: auto;
+    height: 1.9rem;
 }
 
 .ext_btn:hover, .ext_btn:focus-visible

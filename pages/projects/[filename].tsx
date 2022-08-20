@@ -13,6 +13,8 @@ import Tag from '@components/Tag';
 import ExtLink from "@components/ExtLink";
 import PWABtn from "@components/PWABtn";
 import ItchBtn from "@components/ItchBtn";
+import GitHubBtn from "@components/GitHubBtn";
+import GooglePlayBtn from "@components/GooglePlayBtn";
 
 const query = gql`
     query ProjectPostQuery($relativePath: String!) {
@@ -46,6 +48,8 @@ const GlobalStyle = createGlobalStyle`
   }
   main
   {
+    display: flex;
+    flex-direction: column;
     margin-inline: 0.5em;
   }
   .tags
@@ -91,6 +95,10 @@ const BlogPage = (props: { variables: any, data: any }) =>
         <PWABtn href={""}/>
         <br />
         <ItchBtn href={""}/>
+        <br />
+        <GitHubBtn href={""}/>
+        <br />
+        <GooglePlayBtn href={""}/>
         <div className="tags">
           {data.projects.tags.map((tag : string, i : number) => <Tag key={i}>{tag}</Tag>)}
         </div>
