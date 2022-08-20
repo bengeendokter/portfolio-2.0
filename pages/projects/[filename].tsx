@@ -10,11 +10,9 @@ import Path from "@ts/Path"
 import NavHeader from '@components/NavHeader';
 import Footer from '@components/Footer';
 import Tag from '@components/Tag';
-import ExtLink from "@components/ExtLink";
 import PWABtn from "@components/PWABtn";
 import ItchBtn from "@components/ItchBtn";
 import GitHubBtn from "@components/GitHubBtn";
-import GooglePlayBtn from "@components/GooglePlayBtn";
 
 const query = gql`
     query ProjectPostQuery($relativePath: String!) {
@@ -92,13 +90,6 @@ const BlogPage = (props: { variables: any, data: any }) =>
       </header>
       <main id='main-content'>
         <h1>{data.projects.title}</h1>
-        <PWABtn href={""}/>
-        <br />
-        <ItchBtn href={""}/>
-        <br />
-        <GitHubBtn href={""}/>
-        <br />
-        <GooglePlayBtn href={""}/>
         <div className="tags">
           {data.projects.tags.map((tag : string, i : number) => <Tag key={i}>{tag}</Tag>)}
         </div>
@@ -176,17 +167,37 @@ export const getStaticPaths = async () =>
 
 export default BlogPage;
 
-const BtnGithub = (props: { href: string }) =>
+const GitHubBtnComp = (props: { href: string }) =>
 {
   return (
     <>
-    <ExtLink href={props.href} >linkgit</ExtLink>
+    <GitHubBtn href={props.href}/>
+    </>
+  )
+}
+
+const ItchBtnComp = (props: { href: string }) =>
+{
+  return (
+    <>
+    <ItchBtn href={props.href}/>
+    </>
+  )
+}
+
+const PWABtnComp = (props: { href: string }) =>
+{
+  return (
+    <>
+    <PWABtn href={props.href}/>
     </>
   )
 }
 
 const components = {
-  BtnGithub: BtnGithub,
+  GitHubBtn: GitHubBtnComp,
+  ItchBtn: ItchBtnComp,
+  PWABtn: PWABtnComp,
 }
 
 const ContentSection = ({ content }: { content: any }) =>

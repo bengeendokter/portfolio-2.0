@@ -89,8 +89,41 @@ const schema = defineSchema({
           isBody: true,
           templates: [
             {
-              name: "BtnGithub",
-              label: "Button Github",
+              name: "GitHubBtn",
+              label: "Github Button",
+              fields: [
+                {
+                  type: "string",
+                  name: "href",
+                  label: "Hyperlink",
+                }
+              ],
+            },
+            {
+              name: "ItchBtn",
+              label: "itch.io Button",
+              fields: [
+                {
+                  type: "string",
+                  name: "href",
+                  label: "Hyperlink",
+                }
+              ],
+            },
+            {
+              name: "PWABtn",
+              label: "PWA Button",
+              fields: [
+                {
+                  type: "string",
+                  name: "href",
+                  label: "Hyperlink",
+                }
+              ],
+            },
+            {
+              name: "GooglePlayBtn",
+              label: "Google Play Button",
               fields: [
                 {
                   type: "string",

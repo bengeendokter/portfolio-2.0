@@ -21,11 +21,9 @@ The controls are as follows.
 - **pause**: right click screen, p, controller select button
 
 ## Play the game
-- [Open PWA](https://dragon-fly.netlify.app/)
-- [Play on itch.io](https://bengeendokter.itch.io/dragon-fly)
-- [View code on GitHub](https://github.com/bengeendokter/GODOT-dragon-fly)
-
-<BtnGithub href="https://github.com/bengeendokter/GODOT-dragon-fly"></BtnGithub>
+<PWABtn href="https://dragon-fly.netlify.app/"></PWABtn>
+<ItchBtn href="https://bengeendokter.itch.io/dragon-fly"></ItchBtn>
+<GitHubBtn href="https://github.com/bengeendokter/GODOT-dragon-fly"></GitHubBtn>
 
 ## Asset credit
 - background: [Pixel Art Infinite Runner - Pack by edermunizz](https://edermunizz.itch.io/infinite-runner)
