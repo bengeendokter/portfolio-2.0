@@ -1,0 +1,25 @@
+.ext_btn
+{
+    background-color: var(--clr-btn);
+    color: var(--clr-text);
+    text-decoration: none;
+    border-radius: 16px;
+    display: inline-flex;
+    gap: 0.4em;
+    padding: 0.5em;
+    align-items: center;
+    margin-block: 0.4em;
+}
+
+.ext_btn svg
+{
+    fill: var(--clr-text);
+    height: 1.1rem;
+    width: auto;
+}
+
+.ext_btn:hover, .ext_btn:focus-visible
+{
+    outline: var(--clr-text) solid 2px;
+    outline-offset: 0.2em;  
+}

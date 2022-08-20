@@ -11,6 +11,8 @@ import NavHeader from '@components/NavHeader';
 import Footer from '@components/Footer';
 import Tag from '@components/Tag';
 import ExtLink from "@components/ExtLink";
+import PWABtn from "@components/PWABtn";
+import ItchBtn from "@components/ItchBtn";
 
 const query = gql`
     query ProjectPostQuery($relativePath: String!) {
@@ -86,7 +88,9 @@ const BlogPage = (props: { variables: any, data: any }) =>
       </header>
       <main id='main-content'>
         <h1>{data.projects.title}</h1>
-        <ExtLink href="/#CV" >link</ExtLink>
+        <PWABtn href={""}/>
+        <br />
+        <ItchBtn href={""}/>
         <div className="tags">
           {data.projects.tags.map((tag : string, i : number) => <Tag key={i}>{tag}</Tag>)}
         </div>
