@@ -90,3 +90,10 @@ svg:hover, a:focus svg
   transition: fill .2s ease;
   fill: var(--clr-text);
 }
+
+a
+{
+  font-weight: bold;
+  color: rgb(59,130,246);
+  text-decoration: underline;
+}

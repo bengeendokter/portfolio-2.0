@@ -13,6 +13,7 @@ import Tag from '@components/Tag';
 import PWABtn from "@components/PWABtn";
 import ItchBtn from "@components/ItchBtn";
 import GitHubBtn from "@components/GitHubBtn";
+import styles from '@styles/Project.module.css';
 
 const query = gql`
     query ProjectPostQuery($relativePath: String!) {
@@ -23,53 +24,6 @@ const query = gql`
       }
     }
   `
-
-// Styles for markdown
-const GlobalStyle = createGlobalStyle`
-  h1,h2,h3 {
-    margin-bottom: 0.6rem;
-    margin-top: 0.7rem;
-  }
-  p
-  {
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-  }
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1.2rem;
-  }
-  h3 {
-    font-size: 1.1rem;
-  }
-  main
-  {
-    display: flex;
-    flex-direction: column;
-    margin-inline: 0.5em;
-  }
-  .tags
-  {
-    margin-block: 0.5em;
-  }
-  ul {
-    padding-left: 0;
-  }
-  li {
-    list-style-type: none;
-  }
-  a {
-    font-weight: bold;
-    color: rgb(59,130,246);
-    text-decoration: underline;
-  }
-  img
-  {
-    max-width: 100%;
-  }
-  `;
 
 const BlogPage = (props: { variables: any, data: any }) =>
 {
@@ -88,9 +42,9 @@ const BlogPage = (props: { variables: any, data: any }) =>
         {/* TODO remove hardcoded strings */}
         <NavHeader homeData={{skip_nav : "skip_nav", projects_heading : "Projects", cv_heading : "CV"}}></NavHeader>
       </header>
-      <main id='main-content'>
+      <main id='main-content' className={styles.main}>
         <h1>{data.projects.title}</h1>
-        <div className="tags">
+        <div className={styles.tags}>
           {data.projects.tags.map((tag : string, i : number) => <Tag key={i}>{tag}</Tag>)}
         </div>
       <ContentSection
@@ -167,6 +121,8 @@ export const getStaticPaths = async () =>
 
 export default BlogPage;
 
+// Custom components for markdown files
+
 const GitHubBtnComp = (props: { href: string }) =>
 {
   return (
@@ -204,7 +160,7 @@ const ContentSection = ({ content }: { content: any }) =>
 {
   return (<>
     <TinaMarkdown components={components} content={content} />
-    <GlobalStyle /></>
+    </>
   );
 };
 
