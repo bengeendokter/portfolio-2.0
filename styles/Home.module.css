@@ -44,10 +44,18 @@
   padding-inline: 1em;
 }
 
+
+/* projecten & CV */
+.projecten, .CV
+{
+  border-top: 2.1px solid var(--clr-text);
+}
+
 /* projecten */
 .projecten
 {
-  background-color: var(--clr-accent1);
+  --clr-area: var(--clr-background);
+  background-color: var(--clr-area);
   display: grid;
   justify-items: center;
 }
@@ -55,7 +63,7 @@
 .projecten h2
 {
   background-color: var(--clr-text);
-  color: var(--clr-accent1);
+  color: var(--clr-area);
   margin-block-start: 0em;
   margin-block-end: 1em;
   font-size: 1.6rem;
@@ -78,7 +86,8 @@
 /* CV */
 .CV
 {
-  background-color: var(--clr-accent2);
+  --clr-area: var(--clr-background);
+  background-color: var(--clr-area);
   display: grid;
   justify-items: center;
 }
@@ -86,7 +95,7 @@
 .CV h2
 {
   background-color: var(--clr-text);
-  color: var(--clr-accent2);
+  color: var(--clr-area);
   margin-block-start: 0em;
   margin-block-end: 1em;
   font-size: 1.6rem;
@@ -102,7 +111,7 @@
 .download_button
 {
   color: var(--clr-text);
-  background: var(--clr-background);
+  background: var(--clr-accent1);
   text-decoration: none;
   font-weight: bold;
   border-radius: 6px;
@@ -110,11 +119,11 @@
   margin-block: .7em;
 }
 
-.download_button:hover, .download_button:focus
+.download_button:hover, .download_button:focus-visible
 {
-  transition: color .2s ease, background-color .2s ease;
-  color: var(--clr-background);
-  background-color: var(--clr-text);
+  transition: outline .1s ease;
+  outline: var(--clr-text) solid 2px;
+  outline-offset: 0.2em;  
 }
 
 /* desktop styles */

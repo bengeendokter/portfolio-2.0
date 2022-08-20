@@ -10,16 +10,6 @@
   display: inline;
 }
 
-.main_nav li:nth-of-type(1)
-{
-  --clr-shadow: var(--clr-accent1);
-}
-
-.main_nav li:nth-of-type(2)
-{
-  --clr-shadow: var(--clr-accent2);
-}
-
 .main_nav a
 {
   text-decoration: none;
@@ -30,11 +20,11 @@
   border-radius: 100px / 99px;
 }
 
-.main_nav a:hover, .main_nav a:focus
+.main_nav a:hover, .main_nav a:focus-visible
 {
-  transition: color .2s ease, background-color .2s ease;
-  color: var(--clr-background);
-  background-color: var(--clr-text);
+  transition: outline .1s ease;
+  outline: var(--clr-text) solid 2px;
+  outline-offset: 0.2em;  
 }
 
 .main_nav ul

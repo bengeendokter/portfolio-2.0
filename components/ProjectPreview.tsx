@@ -14,7 +14,6 @@ export default function ProjectPreview({ title, tags, description, imgSrc, imgAl
                 <div className="project-info">
                     <p className={styles["project-title"]}>{title}</p>
                     <div className={styles["tags"]}>
-                        {github && <ExtLink href={github} aria-label="GitHub" ><GithubSVG /></ExtLink>}
                         {tags.map((tag, i) => <Tag key={i}>{tag}</Tag>)}</div>
                     <p className={styles["project-beschrijving"]}>{description}</p>
                 </div>

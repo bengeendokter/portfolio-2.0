@@ -24,6 +24,7 @@
 
 .ext_btn:hover, .ext_btn:focus-visible
 {
+    transition: outline .1s ease;
     outline: var(--clr-text) solid 2px;
     outline-offset: 0.2em;  
 }
