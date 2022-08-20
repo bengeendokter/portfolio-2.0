@@ -9,8 +9,6 @@ imgSrc: >-
   https://res.cloudinary.com/bengeendokter/image/upload/v1657037703/dragon-fly_kd2qjh.png
 github: 'https://github.com/bengeendokter/GODOT-dragon-fly'
 ---
-
-# Dragon, fly!
 This is my first game made with the Godot Engine. It's a simple infinite runner, high score game. All the assets I used are from asset packs on itch.io to which I had the rights to use them.
 
 ## Screenshots
@@ -18,7 +16,7 @@ This is my first game made with the Godot Engine. It's a simple infinite runner,
 ![Gameplay2](https://github.com/bengeendokter/GODOT-dragon-fly/blob/main/promo/gif2.gif?raw=true)
 
 ## Controls
-The controls are as follows:
+The controls are as follows.
 - **move**: click screen, space, enter, controller accept button
 - **pause**: right click screen, p, controller select button
 
@@ -26,6 +24,8 @@ The controls are as follows:
 - [Open PWA](https://dragon-fly.netlify.app/)
 - [Play on itch.io](https://bengeendokter.itch.io/dragon-fly)
 - [View code on GitHub](https://github.com/bengeendokter/GODOT-dragon-fly)
+
+<BtnGithub href="https://github.com/bengeendokter/GODOT-dragon-fly"></BtnGithub>
 
 ## Asset credit
 - background: [Pixel Art Infinite Runner - Pack by edermunizz](https://edermunizz.itch.io/infinite-runner)

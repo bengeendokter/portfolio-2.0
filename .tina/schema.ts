@@ -89,21 +89,13 @@ const schema = defineSchema({
           isBody: true,
           templates: [
             {
-              name: "PageSection",
-              label: "Page Section",
+              name: "BtnGithub",
+              label: "Button Github",
               fields: [
                 {
                   type: "string",
-                  name: "heading",
-                  label: "Heading",
-                },
-                {
-                  type: "string",
-                  name: "content",
-                  label: "Content",
-                  ui: {
-                    component: "textarea"
-                  }
+                  name: "href",
+                  label: "Hyperlink",
                 }
               ],
             },
