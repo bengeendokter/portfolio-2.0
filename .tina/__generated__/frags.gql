@@ -5,6 +5,8 @@ fragment PagesParts on Pages {
   cv_heading
   dowload_cv_label
   copyright
+  itch_btn
+  read_more
   intro
 }
 

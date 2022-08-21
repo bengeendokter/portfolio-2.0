@@ -1,9 +1,5 @@
-// THIS FILE HAS BEEN GENERATED WITH THE TINA CLI.
-// This is a demo file once you have tina setup feel free to delete this file
-
 import { staticRequest, gql } from "tinacms";
 import Head from "next/head";
-import { createGlobalStyle } from "styled-components";
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 import Path from "@ts/Path"
@@ -25,7 +21,20 @@ const query = gql`
     }
   `
 
-const BlogPage = (props: { variables: any, data: any }) =>
+const homeQuery = gql`
+  query HomePageQuery($relativePath: String!) {
+  pages(relativePath: $relativePath) {
+    subtitle
+    intro
+    skip_nav
+    projects_heading
+    cv_heading
+    dowload_cv_label
+    copyright
+  }
+}`
+
+const BlogPage = (props: { variables: any, data: any, homeData: any}) =>
 {
   const { data } = useTina({
     query,
@@ -33,34 +42,45 @@ const BlogPage = (props: { variables: any, data: any }) =>
     data: props.data,
   });
 
+  const {pages: homeData} = props.homeData;
+
   return (
     <>
       <Head>
         <title>{data.projects.title}</title>
       </Head>
       <header>
-        {/* TODO remove hardcoded strings */}
-        <NavHeader homeData={{skip_nav : "skip_nav", projects_heading : "Projects", cv_heading : "CV"}}></NavHeader>
+        <NavHeader homeData={homeData}></NavHeader>
       </header>
       <main id='main-content' className={styles.main}>
         <h1>{data.projects.title}</h1>
         <div className={styles.tags}>
-          {data.projects.tags.map((tag : string, i : number) => <Tag key={i}>{tag}</Tag>)}
+          {data.projects.tags.map((tag: string, i: number) => <Tag key={i}>{tag}</Tag>)}
         </div>
-      <ContentSection
-        content={data.projects.body}
-      ></ContentSection>
+        <ContentSection
+          content={data.projects.body}
+        ></ContentSection>
       </main>
-      {/* TODO remove hardcoded strings */}
-      <Footer homeData={{
-        copyright: "Alle rechten voorbehouden"
-      }}></Footer>
+      <Footer homeData={homeData}></Footer>
     </>
   );
 };
 
 export const getStaticProps = async ({ params, locale }: Path) =>
 {
+  // home content ophalen
+  const homeVariables = { relativePath: `${locale}/home.md` }
+  let homeData: any = {}
+  try
+  {
+    homeData = await staticRequest({
+      query: homeQuery,
+      variables: homeVariables,
+    })
+  } catch {
+    // swallow errors related to document creation
+  }
+
   const variables = { relativePath: `${locale}/${params.filename}.md` }
   let data: any = {}
   try
@@ -77,6 +97,7 @@ export const getStaticProps = async ({ params, locale }: Path) =>
     props: {
       variables,
       data,
+      homeData,
     },
   }
 };
@@ -123,20 +144,20 @@ export default BlogPage;
 
 // Custom components for markdown files
 
-const GitHubBtnComp = (props: { href: string }) =>
+const GitHubBtnComp = (props: { href: string}) =>
 {
   return (
     <>
-    <GitHubBtn href={props.href}/>
+      <GitHubBtn href={props.href} />
     </>
   )
 }
 
-const ItchBtnComp = (props: { href: string }) =>
+const ItchBtnComp = (props: { href: string}) =>
 {
   return (
     <>
-    <ItchBtn href={props.href}/>
+      <ItchBtn href={props.href} />
     </>
   )
 }
@@ -145,7 +166,7 @@ const PWABtnComp = (props: { href: string }) =>
 {
   return (
     <>
-    <PWABtn href={props.href}/>
+      <PWABtn href={props.href} />
     </>
   )
 }
@@ -160,7 +181,7 @@ const ContentSection = ({ content }: { content: any }) =>
 {
   return (<>
     <TinaMarkdown components={components} content={content} />
-    </>
+  </>
   );
 };
 

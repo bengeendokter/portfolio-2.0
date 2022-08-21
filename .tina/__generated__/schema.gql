@@ -86,6 +86,8 @@ type Pages implements Node & Document {
   cv_heading: String
   dowload_cv_label: String
   copyright: String
+  itch_btn: String
+  read_more: String
   intro: JSON
   id: ID!
   _sys: SystemInfo!
@@ -150,6 +152,8 @@ input PagesMutation {
   cv_heading: String
   dowload_cv_label: String
   copyright: String
+  itch_btn: String
+  read_more: String
   intro: JSON
 }
 

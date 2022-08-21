@@ -9,7 +9,7 @@ imgSrc: >-
   https://res.cloudinary.com/bengeendokter/image/upload/v1657037703/dragon-fly_kd2qjh.png
 github: 'https://github.com/bengeendokter/GODOT-dragon-fly'
 ---
-This is my first game made with the Godot Engine. It's a simple infinite runner, high score game. All the assets I used are from asset packs on itch.io to which I had the rights to use them.
+This is my first game made with the Godot Engine. It's an infinite runner, high score game. All the assets I used are from asset packs on itch.io to which I had the rights to use them.
 
 ## Screenshots
 ![Gameplay1](https://github.com/bengeendokter/GODOT-dragon-fly/blob/501cf40c12abb1af57bb2f10182381eb0338c5e1/promo/gif1.gif?raw=true)

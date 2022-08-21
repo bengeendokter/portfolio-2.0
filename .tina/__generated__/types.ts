@@ -173,6 +173,8 @@ export type Pages = Node & Document & {
   cv_heading?: Maybe<Scalars['String']>;
   dowload_cv_label?: Maybe<Scalars['String']>;
   copyright?: Maybe<Scalars['String']>;
+  itch_btn?: Maybe<Scalars['String']>;
+  read_more?: Maybe<Scalars['String']>;
   intro?: Maybe<Scalars['JSON']>;
   id: Scalars['ID'];
   _sys: SystemInfo;
@@ -294,6 +296,8 @@ export type PagesMutation = {
   cv_heading?: InputMaybe<Scalars['String']>;
   dowload_cv_label?: InputMaybe<Scalars['String']>;
   copyright?: InputMaybe<Scalars['String']>;
+  itch_btn?: InputMaybe<Scalars['String']>;
+  read_more?: InputMaybe<Scalars['String']>;
   intro?: InputMaybe<Scalars['JSON']>;
 };
 
@@ -307,7 +311,7 @@ export type ProjectsMutation = {
   body?: InputMaybe<Scalars['JSON']>;
 };
 
-export type PagesPartsFragment = { __typename?: 'Pages', subtitle?: string | null, skip_nav?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, intro?: any | null };
+export type PagesPartsFragment = { __typename?: 'Pages', subtitle?: string | null, skip_nav?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, itch_btn?: string | null, read_more?: string | null, intro?: any | null };
 
 export type ProjectsPartsFragment = { __typename?: 'Projects', title?: string | null, tags?: Array<string | null> | null, description?: string | null, imgAlt?: string | null, imgSrc?: string | null, github?: string | null, body?: any | null };
 
@@ -316,7 +320,7 @@ export type PagesQueryVariables = Exact<{
 }>;
 
 
-export type PagesQuery = { __typename?: 'Query', pages: { __typename?: 'Pages', id: string, subtitle?: string | null, skip_nav?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type PagesQuery = { __typename?: 'Query', pages: { __typename?: 'Pages', id: string, subtitle?: string | null, skip_nav?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, itch_btn?: string | null, read_more?: string | null, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type PagesConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']>;
@@ -327,7 +331,7 @@ export type PagesConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PagesConnectionQuery = { __typename?: 'Query', pagesConnection: { __typename?: 'PagesConnection', totalCount: number, edges?: Array<{ __typename?: 'PagesConnectionEdges', node?: { __typename?: 'Pages', id: string, subtitle?: string | null, skip_nav?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type PagesConnectionQuery = { __typename?: 'Query', pagesConnection: { __typename?: 'PagesConnection', totalCount: number, edges?: Array<{ __typename?: 'PagesConnectionEdges', node?: { __typename?: 'Pages', id: string, subtitle?: string | null, skip_nav?: string | null, projects_heading?: string | null, cv_heading?: string | null, dowload_cv_label?: string | null, copyright?: string | null, itch_btn?: string | null, read_more?: string | null, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type ProjectsQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -355,6 +359,8 @@ export const PagesPartsFragmentDoc = gql`
   cv_heading
   dowload_cv_label
   copyright
+  itch_btn
+  read_more
   intro
 }
     `;

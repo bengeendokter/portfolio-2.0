@@ -39,6 +39,16 @@ const schema = defineSchema({
           name: "copyright",
         },
         {
+          type: "string",
+          label: "Itch.io Button",
+          name: "itch_btn",
+        },
+        {
+          type: "string",
+          label: "Read more",
+          name: "read_more",
+        },
+        {
           type: "rich-text",
           label: "Intro",
           name: "intro",

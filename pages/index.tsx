@@ -19,6 +19,7 @@ const homeQuery = gql`
     cv_heading
     dowload_cv_label
     copyright
+    read_more
   }
 }`
 
@@ -65,6 +66,7 @@ export default function Home(props: { variables: any, data: any, locale: string,
       </header>
       <main id='main-content'>
         <section className={styles.intro} aria-label='intro'>
+          {/* TODO alt i18n */}
           <img src="./assets/images/PF.jpg" width="300" height="300" alt="foto van mezelf" className={styles.PF} />
           <div className={styles.intro_info}>
             <h1 className={styles.naam}>Ben Arts</h1>
@@ -76,7 +78,7 @@ export default function Home(props: { variables: any, data: any, locale: string,
         </section>
         <section aria-labelledby='projecten-title' id='projecten' className={styles.projecten}>
           <h2 id='projecten-title'>{homeData.projects_heading}</h2>
-          {projects.map((project, i: number) => <ProjectPreview key={i} {...project} />)}
+          {projects.map((project, i: number) => <ProjectPreview key={i} project={project} homeData={homeData} />)}
         </section>
         <section aria-labelledby='CV-title' id='CV' className={styles.CV}>
           <h2 id='CV-title'>{homeData.cv_heading}</h2>
