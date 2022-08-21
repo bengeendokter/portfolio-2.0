@@ -10,6 +10,8 @@ import PWABtn from "@components/PWABtn";
 import ItchBtn from "@components/ItchBtn";
 import GitHubBtn from "@components/GitHubBtn";
 import styles from '@styles/Project.module.css';
+import ExtLink from "@components/ExtLink";
+import { Children } from "react";
 
 const query = gql`
     query ProjectPostQuery($relativePath: String!) {
@@ -171,10 +173,20 @@ const PWABtnComp = (props: { href: string }) =>
   )
 }
 
+const ExtLinkComp = (props: {url : string, children: Element} | any) =>
+{
+  return (
+    <>
+     <ExtLink href={props.url} >{props.children}</ExtLink>
+    </>
+  )
+}
+
 const components = {
   GitHubBtn: GitHubBtnComp,
   ItchBtn: ItchBtnComp,
   PWABtn: PWABtnComp,
+  a: ExtLinkComp,
 }
 
 const ContentSection = ({ content }: { content: any }) =>
