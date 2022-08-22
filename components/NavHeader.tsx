@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '@styles/NavHeader.module.css';
+import Link from 'next/link';
 
 export default function NavHeader({homeData} : {homeData: {skip_nav : string, projects_heading : string, cv_heading : string}})
 {
@@ -8,8 +9,8 @@ export default function NavHeader({homeData} : {homeData: {skip_nav : string, pr
         <a className={styles.skip_nav} href="#main-content">{homeData.skip_nav}</a>
         <nav className={styles.main_nav}>
           <ul>
-            <li><a href="/#projecten">{homeData.projects_heading}</a></li>
-            <li><a href="/#CV">{homeData.cv_heading}</a></li>
+            <li><Link href="/#projecten"><a>{homeData.projects_heading}</a></Link></li>
+            <li><Link href="/#CV"><a>{homeData.cv_heading}</a></Link></li>
           </ul>
         </nav>
         </>
