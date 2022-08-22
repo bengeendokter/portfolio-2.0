@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "tinacms dev -c \"next dev\"",
-    "build": "tinacms build -c \"next build\"",
+    "build": "tinacms build && next build",
     "start": "tinacms server:start -c \"next start\""
   },
   "dependencies": {

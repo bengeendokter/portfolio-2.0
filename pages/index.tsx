@@ -1,4 +1,5 @@
-import { staticRequest, gql } from "tinacms";
+import { gql } from "tinacms";
+import { client } from '../.tina/__generated__/client';
 import CV from '@components/CV';
 import ProjectPreview from '@components/ProjectPreview';
 import NavHeader from '@components/NavHeader';
@@ -98,7 +99,7 @@ export const getStaticProps = async ({ locales, locale }: { locales: Array<strin
   let homeData: any = {}
   try
   {
-    homeData = await staticRequest({
+    homeData = await client.request({
       query: homeQuery,
       variables: homeVariables,
     })
@@ -111,7 +112,7 @@ export const getStaticProps = async ({ locales, locale }: { locales: Array<strin
   let data: any = {}
   try
   {
-    data = await staticRequest({
+    data = await client.request({
       query,
       variables,
     })

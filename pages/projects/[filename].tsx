@@ -1,4 +1,4 @@
-import { staticRequest, gql } from "tinacms";
+import { gql } from "tinacms";
 import Head from "next/head";
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
@@ -11,6 +11,7 @@ import ItchBtn from "@components/ItchBtn";
 import GitHubBtn from "@components/GitHubBtn";
 import styles from '@styles/Project.module.css';
 import ExtLink from "@components/ExtLink";
+import { client } from '../../.tina/__generated__/client';
 import { Children } from "react";
 
 const query = gql`
@@ -75,7 +76,7 @@ export const getStaticProps = async ({ params, locale }: Path) =>
   let homeData: any = {}
   try
   {
-    homeData = await staticRequest({
+    homeData = await client.request({
       query: homeQuery,
       variables: homeVariables,
     })
@@ -87,7 +88,7 @@ export const getStaticProps = async ({ params, locale }: Path) =>
   let data: any = {}
   try
   {
-    data = await staticRequest({
+    data = await client.request({
       query,
       variables,
     })
@@ -106,7 +107,7 @@ export const getStaticProps = async ({ params, locale }: Path) =>
 
 export const getStaticPaths = async () =>
 {
-  const postsListData: any = (await staticRequest({
+  const postsListData: any = (await client.request({
     query: gql`
         query GetProjectsList {
           projectsConnection {
