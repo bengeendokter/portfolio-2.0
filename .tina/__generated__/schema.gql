@@ -49,9 +49,14 @@ type Query {
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
   pages(relativePath: String): Pages!
-  pagesConnection(before: String, after: String, first: Float, last: Float, sort: String): PagesConnection!
+  pagesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PagesFilter): PagesConnection!
   projects(relativePath: String): Projects!
-  projectsConnection(before: String, after: String, first: Float, last: Float, sort: String): ProjectsConnection!
+  projectsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ProjectsFilter): ProjectsConnection!
+}
+
+input DocumentFilter {
+  pages: PagesFilter
+  projects: ProjectsFilter
 }
 
 type DocumentConnectionEdges {
@@ -74,7 +79,7 @@ type Collection {
   matches: String
   templates: [JSON]
   fields: [JSON]
-  documents(before: String, after: String, first: Float, last: Float, sort: String): DocumentConnection!
+  documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter): DocumentConnection!
 }
 
 union DocumentNode = Pages | Projects
@@ -92,6 +97,31 @@ type Pages implements Node & Document {
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
+}
+
+input StringFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input RichTextFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+}
+
+input PagesFilter {
+  subtitle: StringFilter
+  skip_nav: StringFilter
+  projects_heading: StringFilter
+  cv_heading: StringFilter
+  dowload_cv_label: StringFilter
+  copyright: StringFilter
+  itch_btn: StringFilter
+  read_more: StringFilter
+  intro: RichTextFilter
 }
 
 type PagesConnectionEdges {
@@ -116,6 +146,46 @@ type Projects implements Node & Document {
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
+}
+
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input ProjectsBodyGitHubBtnFilter {
+  href: StringFilter
+}
+
+input ProjectsBodyItchBtnFilter {
+  href: StringFilter
+}
+
+input ProjectsBodyPWABtnFilter {
+  href: StringFilter
+}
+
+input ProjectsBodyGooglePlayBtnFilter {
+  href: StringFilter
+}
+
+input ProjectsBodyFilter {
+  GitHubBtn: ProjectsBodyGitHubBtnFilter
+  ItchBtn: ProjectsBodyItchBtnFilter
+  PWABtn: ProjectsBodyPWABtnFilter
+  GooglePlayBtn: ProjectsBodyGooglePlayBtnFilter
+}
+
+input ProjectsFilter {
+  title: StringFilter
+  tags: StringFilter
+  description: StringFilter
+  imgAlt: StringFilter
+  imgSrc: ImageFilter
+  github: StringFilter
+  body: ProjectsBodyFilter
 }
 
 type ProjectsConnectionEdges {

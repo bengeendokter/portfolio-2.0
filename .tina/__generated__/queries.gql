@@ -15,14 +15,21 @@ query pages($relativePath: String!) {
   }
 }
 
-query pagesConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String) {
+query pagesConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PagesFilter) {
   pagesConnection(
     before: $before
     after: $after
     first: $first
     last: $last
     sort: $sort
+    filter: $filter
   ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
     totalCount
     edges {
       node {
@@ -60,14 +67,21 @@ query projects($relativePath: String!) {
   }
 }
 
-query projectsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String) {
+query projectsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ProjectsFilter) {
   projectsConnection(
     before: $before
     after: $after
     first: $first
     last: $last
     sort: $sort
+    filter: $filter
   ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
     totalCount
     edges {
       node {
