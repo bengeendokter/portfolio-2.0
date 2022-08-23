@@ -1,4 +1,3 @@
-import { gql } from "tinacms";
 import { client } from '../.tina/__generated__/client';
 import CV from '@components/CV';
 import ProjectPreview from '@components/ProjectPreview';
@@ -10,56 +9,17 @@ import ProjectNode from '@ts/ProjectNode';
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 
-const homeQuery = gql`
-  query HomePageQuery($relativePath: String!) {
-  pages(relativePath: $relativePath) {
-    subtitle
-    intro
-    skip_nav
-    projects_heading
-    cv_heading
-    dowload_cv_label
-    copyright
-    read_more
-  }
-}`
-
-const query = gql`{
-  projectsConnection{
-	edges
-    {
-      node
-      {
-				title
-        tags
-        description
-        imgAlt
-        imgSrc
-        github
-        _sys
-        {
-          breadcrumbs
-        }
-    }
-
-  }
-}}`
-
-export default function Home(props: { variables: any, data: any, locale: string, homeData: any, homeVariables: any, projects : any })
+export default function Home(props: { variables: any, data: any, query: any, locale: string, projects : any })
 {
-  const data = props.data;
-  const homeData = props.homeData.data.pages;
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  })
 
-  // const { data: {pages: homeData} } = useTina({
-  //   query: homeQuery,
-  //   variables: props.homeVariables,
-  //   data: props.homeData,
-  // });
+  const homeData = data.pages
 
-  // const projects: Array<ProjectNode> = data.projectsConnection.edges
-  //   .map(({ node }: { node: ProjectNode }) => node)
-  //   .filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);
-  const projects: Array<ProjectNode> = props.projects;
+  const projects: Array<ProjectNode> = props.projects.filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);;
 
   return (
     <>
@@ -96,44 +56,19 @@ export default function Home(props: { variables: any, data: any, locale: string,
 export const getStaticProps = async ({ locales, locale }: { locales: Array<string>, locale: string }) =>
 {
   // home content ophalen
-  const homeVariables = { relativePath: `${locale}/home.md` }
-  // let homeData: any = {}
-  // try
-  // {
-  //   homeData = await client.request({
-  //     query: homeQuery,
-  //     variables: homeVariables,
-  //   })
-  // } catch {
-  //   // swallow errors related to document creation
-  // }
-  const homeData = await client.queries.pages({relativePath: `${locale}/home.md`})
-  console.log(homeData.data.pages);
-
+  const homeResponse = await client.queries.pages({relativePath: `${locale}/home.md`})
 
   // posts ophalen
-  const variables = {};
-  // let data: any = {}
-  // try
-  // {
-  //   data = await client.request({
-  //     query,
-  //     variables,
-  //   })
-  // } catch {
-  //   // swallow errors related to document creation
-  // }
-  const data = await client.queries.projectsConnection();
+  const projectsResponse = await client.queries.projectsConnection();
 
-  const projects: Array<ProjectNode> | any = data.data.projectsConnection.edges!.map((x) => { return x!.node!});
+  const projects: Array<ProjectNode> | any = projectsResponse.data.projectsConnection.edges!.map((x) => { return x!.node!});
   createRSS(projects, locales);
 
   return {
     props: {
-      variables,
-      data,
-      homeData,
-      homeVariables,
+      variables: homeResponse.variables,
+      data: homeResponse.data,
+      query: homeResponse.query,
       projects,
       locale,
     },
