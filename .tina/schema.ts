@@ -7,7 +7,7 @@ const schema = defineSchema({
   {
     token: process.env.TINA_TOKEN,
     clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
-    branch: process.env.BRANCH,
+    branch: process.env.HEAD,
     media:
     {
       tina: {
