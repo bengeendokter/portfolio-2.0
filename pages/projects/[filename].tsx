@@ -139,16 +139,15 @@ export const getStaticPaths = async () =>
   }));
 
   const paths: Array<Path> = [];
-
-  postsListData.projectsConnection.edges.map((post: any) =>
+  const projectsResponse = await client.queries.projectsConnection();
+  projectsResponse.data.projectsConnection.edges!.forEach((post) => 
   {
-    // ensure a `path` is created for each `locale`
-    paths.push({
-      params: { filename: post.node._sys.breadcrumbs[1] },
-      locale: post.node._sys.breadcrumbs[0],
-    });
+        // ensure a `path` is created for each `locale`
+        paths.push({
+          params: { filename: post!.node!._sys.breadcrumbs[1] },
+          locale: post!.node!._sys.breadcrumbs[0],
+        });
   });
-
 
   return {
     paths,

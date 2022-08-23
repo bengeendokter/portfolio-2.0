@@ -61,7 +61,7 @@ export const getStaticProps = async ({ locales, locale }: { locales: Array<strin
   // posts ophalen
   const projectsResponse = await client.queries.projectsConnection();
 
-  const projects: Array<ProjectNode> | any = projectsResponse.data.projectsConnection.edges!.map((x) => { return x!.node!});
+  const projects: Array<ProjectNode> | any = projectsResponse.data.projectsConnection.edges!.map((post) => { return post!.node!});
   createRSS(projects, locales);
 
   return {
