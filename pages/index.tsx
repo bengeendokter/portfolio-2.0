@@ -48,17 +48,18 @@ const query = gql`{
 export default function Home(props: { variables: any, data: any, locale: string, homeData: any, homeVariables: any })
 {
   const data = props.data;
+  const homeData = props.homeData;
 
-  const { data: {pages: homeData} } = useTina({
-    query: homeQuery,
-    variables: props.homeVariables,
-    data: props.homeData,
-  });
+  // const { data: {pages: homeData} } = useTina({
+  //   query: homeQuery,
+  //   variables: props.homeVariables,
+  //   data: props.homeData,
+  // });
 
-  const projects: Array<ProjectNode> = data.projectsConnection.edges
-    .map(({ node }: { node: ProjectNode }) => node)
-    .filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);
-
+  // const projects: Array<ProjectNode> = data.projectsConnection.edges
+  //   .map(({ node }: { node: ProjectNode }) => node)
+  //   .filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);
+  const projects: Array<ProjectNode> = [];
 
   return (
     <>
@@ -96,32 +97,35 @@ export const getStaticProps = async ({ locales, locale }: { locales: Array<strin
 {
   // home content ophalen
   const homeVariables = { relativePath: `${locale}/home.md` }
-  let homeData: any = {}
-  try
-  {
-    homeData = await client.request({
-      query: homeQuery,
-      variables: homeVariables,
-    })
-  } catch {
-    // swallow errors related to document creation
-  }
+  // let homeData: any = {}
+  // try
+  // {
+  //   homeData = await client.request({
+  //     query: homeQuery,
+  //     variables: homeVariables,
+  //   })
+  // } catch {
+  //   // swallow errors related to document creation
+  // }
+  const homeData = await client.queries.pages({relativePath: `${locale}/home.md`})
+
 
   // posts ophalen
-  const variables = {}
-  let data: any = {}
-  try
-  {
-    data = await client.request({
-      query,
-      variables,
-    })
-  } catch {
-    // swallow errors related to document creation
-  }
+  const variables = {};
+  // let data: any = {}
+  // try
+  // {
+  //   data = await client.request({
+  //     query,
+  //     variables,
+  //   })
+  // } catch {
+  //   // swallow errors related to document creation
+  // }
+  const data = await client.queries.projectsConnection();
 
-  const projects: Array<ProjectNode> = data.projectsConnection.edges.map(({ node }: { node: ProjectNode }) => node);
-  createRSS(projects, locales);
+  // const projects: Array<ProjectNode> = data.data.projectsConnection.edges.map(({ node }: { node: ProjectNode }) => node);
+  // createRSS(projects, locales);
 
   return {
     props: {
