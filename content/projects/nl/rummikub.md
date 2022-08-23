@@ -6,8 +6,7 @@ tags:
   - HOGENT
 description: Java applictie van het spel Rummikub.
 imgAlt: screenshot van Rummikub project
-imgSrc: >-
-  https://res.cloudinary.com/bengeendokter/image/upload/v1657037703/rummikub_go6p8g.png
+imgSrc: /assets/images/rummikub.png
 github: 'https://github.com/bengeendokter/HOGENT-rummikub'
 ---
 

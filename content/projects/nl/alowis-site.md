@@ -5,8 +5,7 @@ tags:
   - CSS
 description: Site voor Scouts Sint-Aloysius Aalst.
 imgAlt: screenshot van Alowis Site
-imgSrc: >-
-  https://res.cloudinary.com/bengeendokter/image/upload/v1657037703/alowissite_fvx5ks.png
+imgSrc: /assets/images/alowissite.png
 github: 'https://github.com/bengeendokter/ALOWIS-site'
 ---
 
