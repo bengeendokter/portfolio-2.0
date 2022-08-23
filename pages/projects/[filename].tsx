@@ -39,13 +39,26 @@ const homeQuery = gql`
 
 const BlogPage = (props: { variables: any, data: any, homeData: any}) =>
 {
-  const { data } = useTina({
-    query,
-    variables: props.variables,
-    data: props.data,
-  });
+  // const { data } = useTina({
+  //   query,
+  //   variables: props.variables,
+  //   data: props.data,
+  // });
 
-  const {pages: homeData} = props.homeData;
+  // const {pages: homeData} = props.homeData;
+  const data = {projects: {
+    title: "",
+    body: "",
+    tags: [],
+  }}
+
+  const homeData = {
+    skip_nav: "",
+    projects_heading: "",
+    cv_heading: "",
+    copyright: "",
+
+  };
 
   return (
     <>
@@ -72,35 +85,35 @@ const BlogPage = (props: { variables: any, data: any, homeData: any}) =>
 export const getStaticProps = async ({ params, locale }: Path) =>
 {
   // home content ophalen
-  const homeVariables = { relativePath: `${locale}/home.md` }
-  let homeData: any = {}
-  try
-  {
-    homeData = await client.request({
-      query: homeQuery,
-      variables: homeVariables,
-    })
-  } catch {
-    // swallow errors related to document creation
-  }
+  // const homeVariables = { relativePath: `${locale}/home.md` }
+  // let homeData: any = {}
+  // try
+  // {
+  //   homeData = await client.request({
+  //     query: homeQuery,
+  //     variables: homeVariables,
+  //   })
+  // } catch {
+  //   // swallow errors related to document creation
+  // }
 
-  const variables = { relativePath: `${locale}/${params.filename}.md` }
-  let data: any = {}
-  try
-  {
-    data = await client.request({
-      query,
-      variables,
-    })
-  } catch {
-    // swallow errors related to document creation
-  }
+  // const variables = { relativePath: `${locale}/${params.filename}.md` }
+  // let data: any = {}
+  // try
+  // {
+  //   data = await client.request({
+  //     query,
+  //     variables,
+  //   })
+  // } catch {
+  //   // swallow errors related to document creation
+  // }
 
   return {
     props: {
-      variables,
-      data,
-      homeData,
+      variables: {},
+      data: {},
+      homeData: {},
     },
   }
 };
