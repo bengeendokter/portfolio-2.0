@@ -1,4 +1,3 @@
-import { gql } from "tinacms";
 import Head from "next/head";
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
@@ -12,53 +11,16 @@ import GitHubBtn from "@components/GitHubBtn";
 import styles from '@styles/Project.module.css';
 import ExtLink from "@components/ExtLink";
 import { client } from '../../.tina/__generated__/client';
-import { Children } from "react";
 
-const query = gql`
-    query ProjectPostQuery($relativePath: String!) {
-      projects(relativePath: $relativePath) {
-        title
-        body
-        tags
-      }
-    }
-  `
-
-const homeQuery = gql`
-  query HomePageQuery($relativePath: String!) {
-  pages(relativePath: $relativePath) {
-    subtitle
-    intro
-    skip_nav
-    projects_heading
-    cv_heading
-    dowload_cv_label
-    copyright
-  }
-}`
-
-const BlogPage = (props: { variables: any, data: any, homeData: any}) =>
+const BlogPage = (props: { variables: any, data: any, query: any, homeData: any}) =>
 {
-  // const { data } = useTina({
-  //   query,
-  //   variables: props.variables,
-  //   data: props.data,
-  // });
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  })
 
-  // const {pages: homeData} = props.homeData;
-  const data = {projects: {
-    title: "",
-    body: "",
-    tags: [],
-  }}
-
-  const homeData = {
-    skip_nav: "",
-    projects_heading: "",
-    cv_heading: "",
-    copyright: "",
-
-  };
+  const homeData = props.homeData;
 
   return (
     <>
@@ -85,59 +47,23 @@ const BlogPage = (props: { variables: any, data: any, homeData: any}) =>
 export const getStaticProps = async ({ params, locale }: Path) =>
 {
   // home content ophalen
-  // const homeVariables = { relativePath: `${locale}/home.md` }
-  // let homeData: any = {}
-  // try
-  // {
-  //   homeData = await client.request({
-  //     query: homeQuery,
-  //     variables: homeVariables,
-  //   })
-  // } catch {
-  //   // swallow errors related to document creation
-  // }
+  const homeResponse = await client.queries.pages({relativePath: `${locale}/home.md`});
 
-  // const variables = { relativePath: `${locale}/${params.filename}.md` }
-  // let data: any = {}
-  // try
-  // {
-  //   data = await client.request({
-  //     query,
-  //     variables,
-  //   })
-  // } catch {
-  //   // swallow errors related to document creation
-  // }
+  // project content ophalen
+  const projectResponse = await client.queries.projects({relativePath: `${locale}/${params.filename}.md`});
 
   return {
     props: {
-      variables: {},
-      data: {},
-      homeData: {},
+      variables: projectResponse.variables,
+      data: projectResponse.data,
+      query: projectResponse.query,
+      homeData: homeResponse.data.pages,
     },
   }
 };
 
 export const getStaticPaths = async () =>
 {
-  const postsListData: any = (await client.request({
-    query: gql`
-        query GetProjectsList {
-          projectsConnection {
-            edges {
-              node {
-                ...on Document {
-                  _sys {
-                    breadcrumbs
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
-  }));
-
   const paths: Array<Path> = [];
   const projectsResponse = await client.queries.projectsConnection();
   projectsResponse.data.projectsConnection.edges!.forEach((post) => 
