@@ -45,10 +45,10 @@ const query = gql`{
   }
 }}`
 
-export default function Home(props: { variables: any, data: any, locale: string, homeData: any, homeVariables: any })
+export default function Home(props: { variables: any, data: any, locale: string, homeData: any, homeVariables: any, projects : any })
 {
   const data = props.data;
-  const homeData = props.homeData;
+  const homeData = props.homeData.data.pages;
 
   // const { data: {pages: homeData} } = useTina({
   //   query: homeQuery,
@@ -59,7 +59,7 @@ export default function Home(props: { variables: any, data: any, locale: string,
   // const projects: Array<ProjectNode> = data.projectsConnection.edges
   //   .map(({ node }: { node: ProjectNode }) => node)
   //   .filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);
-  const projects: Array<ProjectNode> = [];
+  const projects: Array<ProjectNode> = props.projects;
 
   return (
     <>
@@ -108,6 +108,7 @@ export const getStaticProps = async ({ locales, locale }: { locales: Array<strin
   //   // swallow errors related to document creation
   // }
   const homeData = await client.queries.pages({relativePath: `${locale}/home.md`})
+  console.log(homeData.data.pages);
 
 
   // posts ophalen
@@ -124,8 +125,8 @@ export const getStaticProps = async ({ locales, locale }: { locales: Array<strin
   // }
   const data = await client.queries.projectsConnection();
 
-  // const projects: Array<ProjectNode> = data.data.projectsConnection.edges.map(({ node }: { node: ProjectNode }) => node);
-  // createRSS(projects, locales);
+  const projects: Array<ProjectNode> | any = data.data.projectsConnection.edges!.map((x) => { return x!.node!});
+  createRSS(projects, locales);
 
   return {
     props: {
@@ -133,6 +134,7 @@ export const getStaticProps = async ({ locales, locale }: { locales: Array<strin
       data,
       homeData,
       homeVariables,
+      projects,
       locale,
     },
   }
