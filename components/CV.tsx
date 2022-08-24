@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from '@styles/CV.module.css';
+import Image from 'next/future/image';
+import img from "../public/assets/images/CV.png";
 
 export default function CV()
 {
@@ -68,6 +70,6 @@ export default function CV()
         //         </ul>
         //     </section>
         // </article>
-        <img src="./assets/images/CV.png" alt="CV van Ben Arts" className={styles.main} />
+        <Image src={img} alt="CV van Ben Arts" className={styles.main} />
     );
 };
