@@ -7,7 +7,8 @@ import styles from '@styles/Home.module.css';
 import createRSS from '@utils/createRSS';
 import ProjectNode from '@ts/ProjectNode';
 import { useTina } from "tinacms/dist/edit-state";
-import { TinaMarkdown } from 'tinacms/dist/rich-text'
+import { TinaMarkdown } from 'tinacms/dist/rich-text';
+import Image from 'next/future/image';
 
 export default function Home(props: { variables: any, data: any, query: any, locale: string, projects : any })
 {
@@ -29,7 +30,13 @@ export default function Home(props: { variables: any, data: any, query: any, loc
       <main id='main-content'>
         <section className={styles.intro} aria-label='intro'>
           {/* TODO alt i18n */}
-          <img src="./assets/images/PF.jpg" width="300" height="300" alt="foto van mezelf" className={styles.PF} />
+          <Image
+            src={homeData.pf}
+            alt="foto van mezelf"
+            className={styles.PF}
+            width="300"
+            height="300"
+          />
           <div className={styles.intro_info}>
             <h1 className={styles.naam}>Ben Arts</h1>
             <p className={styles.geendokter}>{homeData.subtitle}</p>

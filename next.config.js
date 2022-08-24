@@ -13,6 +13,11 @@ module.exports = withPWA({
     locales: ["nl", "en"],
     defaultLocale: "nl",
   },
+  experimental: {
+    images: {
+        allowFutureImage: true
+    }
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

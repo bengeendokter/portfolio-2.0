@@ -23,6 +23,11 @@ const schema = defineSchema({
       path: "content/pages",
       fields: [
         {
+          name: 'pf',
+          type: 'image',
+          label: 'Profile Picture',
+        },
+        {
           type: "string",
           label: "Subtitle",
           name: "subtitle",
@@ -51,11 +56,6 @@ const schema = defineSchema({
           type: "string",
           label: "Copyright",
           name: "copyright",
-        },
-        {
-          type: "string",
-          label: "Itch.io Button",
-          name: "itch_btn",
         },
         {
           type: "string",

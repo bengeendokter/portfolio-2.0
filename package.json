@@ -8,7 +8,7 @@
   "dependencies": {
     "@tinacms/auth": "^0.50.3",
     "feed": "^4.2.2",
-    "next": "latest",
+    "next": "^12.2.5",
     "next-pwa": "^5.4.1",
     "next-tinacms-cloudinary": "^3.5.25",
     "react": "^17.0.2",
