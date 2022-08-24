@@ -10,6 +10,12 @@ imgSrc: /assets/images/rummikub.png
 github: 'https://github.com/bengeendokter/HOGENT-rummikub'
 ---
 
-# Rummikub
+De opgave van mijn eerste groepsproject voor development in HOGENT was dat we een Java applicatie van het spel Rummikub moesten maken. Deze applicatie moest gekoppeld zijn aan een SQL databank voor te kunnen inloggen met gebruikers en moest JavaFX gebruiken voor de GUI. We hebben ook moeten leren werken met resource bundels om de applicatie meertalig te maken.
 
-Java applictie van het spel Rummikub.
+## Screenshot
+
+![Java Rummikub applicatie](/assets/images/rummikub.png)
+
+## Links
+
+<GitHubBtn href="https://github.com/bengeendokter/HOGENT-rummikub" />
