@@ -22,6 +22,10 @@ export default function Home(props: { variables: any, data: any, query: any, loc
 
   const projects: Array<ProjectNode> = props.projects.filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);;
 
+  const loaderProp =({ src } : {src: string}) => {
+    return src;
+}
+
   return (
     <>
       <header>
@@ -34,8 +38,9 @@ export default function Home(props: { variables: any, data: any, query: any, loc
             src={homeData.pf}
             alt="foto van mezelf"
             className={styles.PF}
-            width="300"
-            height="300"
+            width={300}
+            height={300}
+            loader={loaderProp}
           />
           <div className={styles.intro_info}>
             <h1 className={styles.naam}>Ben Arts</h1>
