@@ -5,7 +5,7 @@ import { client } from "./__generated__/client";
 const schema = defineSchema({
   config:
   {
-    token: process.env.TINA_TOKEN,
+    token: process.env.HEAD == "main" ? process.env.TINA_TOKEN : process.env.TINA_TOKEN_DEV,
     clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
     branch: process.env.HEAD,
     media:
