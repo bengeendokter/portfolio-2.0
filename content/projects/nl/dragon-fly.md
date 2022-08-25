@@ -13,8 +13,7 @@ Dit is mijn eerste spel gemaakt met de Godot Engine. Het is een infinite runner,
 
 ## Screenshots
 
-![Gameplay1](https://github.com/bengeendokter/GODOT-dragon-fly/blob/501cf40c12abb1af57bb2f10182381eb0338c5e1/promo/gif1.gif?raw=true "")
-![Gameplay2](https://github.com/bengeendokter/GODOT-dragon-fly/blob/main/promo/gif2.gif?raw=true "")
+![Dragon, fly! itch.io page](/assets/images/dragon-fly.png "")
 
 ## Besturing
 
@@ -37,3 +36,4 @@ The besturing is als volgt.
 * lettertype: [Clover Sans by LemmaEOF](https://lemmaeof.itch.io/clover-sans "")
 * muziek: [journey village by Michael](https://mikeheartu.itch.io/journey-village "")
 * draak sprite: [Vimlark Asset Pack by Vimlark](https://vimlark.itch.io/vimlark-asset-pack "")
+
