@@ -42,7 +42,7 @@ export default function Home(props: { variables: any, data: any, query: any, loc
             className={styles.PF}
             width={300}
             height={300}
-            loader={loaderProp}
+            // loader={loaderProp}
             priority
           />
           <div className={styles.intro_info}>

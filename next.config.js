@@ -9,6 +9,9 @@ module.exports = withPWA({
     register: false,
     runtimeCaching,
   },
+  images: {
+    domains: ['localhost', 'assets.tina.io', 'bengeendokter.be', 'dev.bengeendokter.be'],
+  },
   i18n: {
     locales: ["nl", "en"],
     defaultLocale: "nl",
@@ -16,7 +19,6 @@ module.exports = withPWA({
   experimental: {
     images: {
         allowFutureImage: true,
-        domains: ['localhost', 'assets.tina.io', 'bengeendokter.be', 'dev.bengeendokter.be'],
     }
   },
   webpack(config) {
