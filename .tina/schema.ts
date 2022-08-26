@@ -24,14 +24,9 @@ const schema = defineSchema({
       format: "md",
       fields: [
         {
-          name: 'pf',
-          type: 'image',
-          label: 'Profile Picture',
-        },
-        {
-          name: 'pfImgAlt',
-          type: 'string',
-          label: 'Image Alt',
+          name: "pf",
+          type: "image",
+          label: "Profile Picture",
         },
         {
           type: "string",
@@ -69,6 +64,11 @@ const schema = defineSchema({
           name: "read_more",
         },
         {
+          type: "string",
+          label: "Image PF Alt",
+          name: "pfImgAlt",
+        },
+        {
           type: "rich-text",
           label: "Intro",
           name: "intro",
@@ -104,7 +104,7 @@ const schema = defineSchema({
           name: "imgAlt",
         },
         {
-          type: 'image',
+          type: "image",
           label: "Imgage Src",
           name: "imgSrc",
         },
@@ -168,6 +168,6 @@ const schema = defineSchema({
 export const tinaConfig = defineConfig({
   client,
   schema,
-  })
+})
 
 export default schema
