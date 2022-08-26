@@ -21,6 +21,7 @@ const schema = defineSchema({
       label: "Pages",
       name: "pages",
       path: "content/pages",
+      format: "md",
       fields: [
         {
           name: 'pf',
@@ -74,6 +75,7 @@ const schema = defineSchema({
       label: "Project Posts",
       name: "projects",
       path: "content/projects",
+      format: "md",
       fields: [
         {
           type: "string",
