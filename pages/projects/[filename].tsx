@@ -131,6 +131,7 @@ const ImgComp = (props: { url: string, alt?: string | undefined } | any) =>
         width={460}
         height={329}
         alt={props.alt}
+        priority
       />
     </>
   )

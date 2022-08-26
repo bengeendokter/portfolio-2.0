@@ -29,6 +29,11 @@ const schema = defineSchema({
           label: 'Profile Picture',
         },
         {
+          name: 'imgAlt',
+          type: 'string',
+          label: 'Image Alt',
+        },
+        {
           type: "string",
           label: "Subtitle",
           name: "subtitle",

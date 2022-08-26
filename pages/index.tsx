@@ -29,10 +29,9 @@ export default function Home(props: { variables: any, data: any, query: any, loc
       </header>
       <main id='main-content'>
         <section className={styles.intro} aria-label='intro'>
-          {/* TODO alt i18n */}
           <Image
             src={homeData.pf}
-            alt="foto van mezelf"
+            alt={homeData.imgAlt}
             className={styles.PF}
             width={300}
             height={300}
