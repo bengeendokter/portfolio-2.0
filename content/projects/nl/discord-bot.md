@@ -7,7 +7,6 @@ tags:
 description: Discord chatbot geschreven in Python.
 imgAlt: Discord Bot commando voorbeeld
 imgSrc: /assets/images/discord-bot.png
-github: 'https://github.com/bengeendokter/ALOWIS-discordbot'
 ---
 
 Bij mijn scoutsgroep was er het idee om Discord te gebruiken als nieuw communicatiekanaal. Ik gebruikte Discord al en wist dus dat veel servers op Discord chatbots hebben en wou voor de Discord van onze scouts ook zo’n bot proberen maken.

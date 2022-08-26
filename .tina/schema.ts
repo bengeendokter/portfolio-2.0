@@ -109,11 +109,6 @@ const schema = defineSchema({
           name: "imgSrc",
         },
         {
-          type: "string",
-          label: "Github",
-          name: "github",
-        },
-        {
           type: "rich-text",
           label: "Project Post Body",
           name: "body",

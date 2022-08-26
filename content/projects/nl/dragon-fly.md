@@ -6,7 +6,6 @@ tags:
 description: Video game gemaakt met de Godot game engine.
 imgAlt: 'screenshot van ''Dragon, fly!'' spel'
 imgSrc: /assets/images/dragon-fly.png
-github: 'https://github.com/bengeendokter/GODOT-dragon-fly'
 ---
 
 Dit is mijn eerste spel gemaakt met de Godot Engine. Het is een infinite runner, high score spel. Alle assets die ik heb gebruikt zijn afkomstig van asset packs op itch.io waarvoor ik de rechten had om ze te gebruiken.

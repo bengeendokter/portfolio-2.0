@@ -6,7 +6,6 @@ tags:
 description: Site voor Scouts Sint-Aloysius Aalst.
 imgAlt: screenshot van Alowis Site
 imgSrc: /assets/images/alowissite.png
-github: 'https://github.com/bengeendokter/ALOWIS-site'
 ---
 
 Ik heb voor mijn
