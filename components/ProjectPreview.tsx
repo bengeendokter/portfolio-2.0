@@ -1,4 +1,3 @@
-import React from 'react';
 import Tag from '@components/Tag';
 import styles from '@styles/ProjectPreview.module.css';
 import Project from '@ts/Project';
@@ -7,8 +6,9 @@ import Image from 'next/future/image';
 
 export default function ProjectPreview({project: { title, tags, description, imgSrc, imgAlt, github, _sys, ...rest }, homeData}: {project: Project, homeData: {read_more: string}})
 {
-    const loaderProp =({ src } : {src: string}) => {
-        return src;
+    const loaderProp = ({ src, width, quality }: { src: string, width: number, quality?: number | undefined }) =>
+    {
+      return `${src}`;
     }
 
     return (

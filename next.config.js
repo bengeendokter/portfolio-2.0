@@ -16,7 +16,7 @@ module.exports = withPWA({
   experimental: {
     images: {
         allowFutureImage: true,
-        domains: ['assets.tina.io', 'bengeendokter.be', 'dev.bengeendokter.be'],
+        domains: ['localhost', 'assets.tina.io', 'bengeendokter.be', 'dev.bengeendokter.be'],
     }
   },
   webpack(config) {

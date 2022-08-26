@@ -10,7 +10,7 @@ import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import Image from 'next/future/image';
 
-export default function Home(props: { variables: any, data: any, query: any, locale: string, projects : any })
+export default function Home(props: { variables: any, data: any, query: any, locale: string, projects: any })
 {
   const { data } = useTina({
     query: props.query,
@@ -22,9 +22,11 @@ export default function Home(props: { variables: any, data: any, query: any, loc
 
   const projects: Array<ProjectNode> = props.projects.filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);;
 
-  const loaderProp =({ src } : {src: string}) => {
-    return src;
-}
+
+  const loaderProp = ({ src, width, quality }: { src: string, width: number, quality?: number | undefined }) =>
+  {
+    return `${src}`;
+  }
 
   return (
     <>
@@ -41,13 +43,14 @@ export default function Home(props: { variables: any, data: any, query: any, loc
             width={300}
             height={300}
             loader={loaderProp}
+            priority
           />
           <div className={styles.intro_info}>
             <h1 className={styles.naam}>Ben Arts</h1>
             <p className={styles.geendokter}>{homeData.subtitle}</p>
             <div className={styles.intro_text}><TinaMarkdown content={homeData.intro} />
             </div>
-            
+
           </div>
         </section>
         <section aria-labelledby='projecten-title' id='projecten' className={styles.projecten}>
@@ -68,12 +71,12 @@ export default function Home(props: { variables: any, data: any, query: any, loc
 export const getStaticProps = async ({ locales, locale }: { locales: Array<string>, locale: string }) =>
 {
   // home content ophalen
-  const homeResponse = await client.queries.pages({relativePath: `${locale}/home.md`})
+  const homeResponse = await client.queries.pages({ relativePath: `${locale}/home.md` })
 
   // posts ophalen
   const projectsResponse = await client.queries.projectsConnection();
 
-  const projects: Array<ProjectNode> | any = projectsResponse.data.projectsConnection.edges!.map((post) => { return post!.node!});
+  const projects: Array<ProjectNode> | any = projectsResponse.data.projectsConnection.edges!.map((post) => { return post!.node! });
   createRSS(projects, locales);
 
   return {

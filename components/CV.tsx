@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '@styles/CV.module.css';
 import Image from 'next/future/image';
 import img from "../public/assets/images/CV.png";
@@ -72,6 +71,7 @@ export default function CV()
         // </article>
         <>
         <Image src={img} alt="CV van Ben Arts" className={styles.main} />
+        {/* <Image src={"/assets/images/CV.png"} width={2380} height={3369} alt="CV van Ben Arts" className={styles.main} /> */}
         </>
     );
 };
