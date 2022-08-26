@@ -12,8 +12,8 @@ export default function ProjectPreview({ project: { title, tags, description, im
                 <Image
                     src={imgSrc}
                     alt={imgAlt}
-                    width="460"
-                    height="329"
+                    width={460}
+                    height={329}
                     className={styles.project_image}
                 />
                 <div className={styles.project_info}>

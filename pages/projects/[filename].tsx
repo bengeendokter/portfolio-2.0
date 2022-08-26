@@ -11,8 +11,9 @@ import GitHubBtn from "@components/GitHubBtn";
 import styles from '@styles/Project.module.css';
 import ExtLink from "@components/ExtLink";
 import { client } from '../../.tina/__generated__/client';
+import Image from 'next/future/image';
 
-const BlogPage = (props: { variables: any, data: any, query: any, homeData: any}) =>
+const BlogPage = (props: { variables: any, data: any, query: any, homeData: any }) =>
 {
   const { data } = useTina({
     query: props.query,
@@ -47,10 +48,10 @@ const BlogPage = (props: { variables: any, data: any, query: any, homeData: any}
 export const getStaticProps = async ({ params, locale }: Path) =>
 {
   // home content ophalen
-  const homeResponse = await client.queries.pages({relativePath: `${locale}/home.md`});
+  const homeResponse = await client.queries.pages({ relativePath: `${locale}/home.md` });
 
   // project content ophalen
-  const projectResponse = await client.queries.projects({relativePath: `${locale}/${params.filename}.md`});
+  const projectResponse = await client.queries.projects({ relativePath: `${locale}/${params.filename}.md` });
 
   return {
     props: {
@@ -68,11 +69,11 @@ export const getStaticPaths = async () =>
   const projectsResponse = await client.queries.projectsConnection();
   projectsResponse.data.projectsConnection.edges!.forEach((post) => 
   {
-        // ensure a `path` is created for each `locale`
-        paths.push({
-          params: { filename: post!.node!._sys.breadcrumbs[1] },
-          locale: post!.node!._sys.breadcrumbs[0],
-        });
+    // ensure a `path` is created for each `locale`
+    paths.push({
+      params: { filename: post!.node!._sys.breadcrumbs[1] },
+      locale: post!.node!._sys.breadcrumbs[0],
+    });
   });
 
   return {
@@ -85,7 +86,7 @@ export default BlogPage;
 
 // Custom components for markdown files
 
-const GitHubBtnComp = (props: { href: string}) =>
+const GitHubBtnComp = (props: { href: string }) =>
 {
   return (
     <>
@@ -94,7 +95,7 @@ const GitHubBtnComp = (props: { href: string}) =>
   )
 }
 
-const ItchBtnComp = (props: { href: string}) =>
+const ItchBtnComp = (props: { href: string }) =>
 {
   return (
     <>
@@ -112,11 +113,25 @@ const PWABtnComp = (props: { href: string }) =>
   )
 }
 
-const ExtLinkComp = (props: {url : string, children: Element} | any) =>
+const ExtLinkComp = (props: { url: string, children: Element } | any) =>
 {
   return (
     <>
-     <ExtLink href={props.url} >{props.children}</ExtLink>
+      <ExtLink href={props.url} >{props.children}</ExtLink>
+    </>
+  )
+}
+
+const ImgComp = (props: { url: string, alt?: string | undefined } | any) =>
+{
+  return (
+    <>
+      <Image
+        src={props.url}
+        width={460}
+        height={329}
+        alt={props.alt}
+      />
     </>
   )
 }
@@ -126,6 +141,7 @@ const components = {
   ItchBtn: ItchBtnComp,
   PWABtn: PWABtnComp,
   a: ExtLinkComp,
+  img: ImgComp,
 }
 
 const ContentSection = ({ content }: { content: any }) =>
