@@ -1,6 +1,6 @@
 ---
 pf: /assets/images/PF.jpg
-imgAlt: myself
+pfImgAlt: myself
 subtitle: not a doctor
 skip_nav: Skip Navigation
 projects_heading: Projects

@@ -29,14 +29,14 @@ export default function Home(props: { variables: any, data: any, query: any, loc
       </header>
       <main id='main-content'>
         <section className={styles.intro} aria-label='intro'>
-          <Image
-            src={homeData.pf}
-            alt={homeData.imgAlt}
-            className={styles.PF}
-            width={300}
-            height={300}
-            priority
-          />
+          <div className={styles.PF}>
+            <Image
+              src={homeData.pf}
+              alt={homeData.pfImgAlt}
+              fill
+              priority
+            />
+          </div>
           <div className={styles.intro_info}>
             <h1 className={styles.naam}>Ben Arts</h1>
             <p className={styles.geendokter}>{homeData.subtitle}</p>

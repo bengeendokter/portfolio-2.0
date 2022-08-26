@@ -29,7 +29,7 @@ const schema = defineSchema({
           label: 'Profile Picture',
         },
         {
-          name: 'imgAlt',
+          name: 'pfImgAlt',
           type: 'string',
           label: 'Image Alt',
         },

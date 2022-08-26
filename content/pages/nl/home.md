@@ -1,6 +1,6 @@
 ---
 pf: /assets/images/PF.jpg
-imgAlt: mezelf
+pfImgAlt: mezelf
 subtitle: geen dokter
 skip_nav: Navigatie overslaan
 projects_heading: Projecten
