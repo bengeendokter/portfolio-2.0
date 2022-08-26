@@ -20,13 +20,7 @@ export default function Home(props: { variables: any, data: any, query: any, loc
 
   const homeData = data.pages
 
-  const projects: Array<ProjectNode> = props.projects.filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);;
-
-
-  const loaderProp = ({ src, width, quality }: { src: string, width: number, quality?: number | undefined }) =>
-  {
-    return `${src}`;
-  }
+  const projects: Array<ProjectNode> = props.projects.filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);
 
   return (
     <>
@@ -42,7 +36,6 @@ export default function Home(props: { variables: any, data: any, query: any, loc
             className={styles.PF}
             width={300}
             height={300}
-            // loader={loaderProp}
             priority
           />
           <div className={styles.intro_info}>

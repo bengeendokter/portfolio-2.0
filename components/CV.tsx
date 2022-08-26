@@ -70,8 +70,7 @@ export default function CV()
         //     </section>
         // </article>
         <>
-        <Image src={img} alt="CV van Ben Arts" className={styles.main} />
-        {/* <Image src={"/assets/images/CV.png"} width={2380} height={3369} alt="CV van Ben Arts" className={styles.main} /> */}
+            <Image src={img} alt="CV van Ben Arts" className={styles.main} />
         </>
     );
 };
