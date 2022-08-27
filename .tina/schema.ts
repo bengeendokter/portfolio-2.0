@@ -30,6 +30,11 @@ const schema = defineSchema({
         },
         {
           type: "string",
+          label: "Image PF Alt",
+          name: "pfImgAlt",
+        },
+        {
+          type: "string",
           label: "Subtitle",
           name: "subtitle",
         },
@@ -62,11 +67,6 @@ const schema = defineSchema({
           type: "string",
           label: "Read more",
           name: "read_more",
-        },
-        {
-          type: "string",
-          label: "Image PF Alt",
-          name: "pfImgAlt",
         },
         {
           type: "rich-text",
