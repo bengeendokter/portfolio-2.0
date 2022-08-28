@@ -8,13 +8,19 @@
   width: 100%;
   display: grid;
   justify-items: start;
+  align-items: center;
 }
 
 .project_image
 {
+  position: relative;
   width: 89%;
-  height: auto;
+  aspect-ratio: 460/329;
   margin-inline: auto;
+}
+
+.project_image img
+{
   border-radius: 7px;
 }
 

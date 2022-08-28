@@ -9,13 +9,13 @@ export default function ProjectPreview({ project: { title, tags, description, im
     return (
         <div className={styles.main}>
             <div className={styles.project_preview}>
-                <Image
-                    src={imgSrc}
-                    alt={imgAlt}
-                    width={460}
-                    height={329}
-                    className={styles.project_image}
-                />
+                <div className={styles.project_image}>
+                    <Image
+                        src={imgSrc}
+                        alt={imgAlt}
+                        fill
+                    />
+                </div>
                 <div className={styles.project_info}>
                     <h3 className={styles.project_title}>{title}</h3>
                     <div className={styles.tags}>
