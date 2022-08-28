@@ -44,9 +44,20 @@ const schema = defineSchema({
           name: "subtitle",
         },
         {
+          type: "rich-text",
+          label: "Intro",
+          name: "intro",
+          isBody: true,
+        },
+        {
           type: "string",
           label: "Projects heading",
           name: "projects_heading",
+        },
+        {
+          type: "string",
+          label: "Read more",
+          name: "read_more",
         },
         {
           type: "string",
@@ -62,17 +73,6 @@ const schema = defineSchema({
           type: "string",
           label: "Copyright",
           name: "copyright",
-        },
-        {
-          type: "string",
-          label: "Read more",
-          name: "read_more",
-        },
-        {
-          type: "rich-text",
-          label: "Intro",
-          name: "intro",
-          isBody: true,
         }
       ],
     },
@@ -99,14 +99,14 @@ const schema = defineSchema({
           name: "description",
         },
         {
-          type: "string",
-          label: "Imgage Alt",
-          name: "imgAlt",
-        },
-        {
           type: "image",
           label: "Imgage Src",
           name: "imgSrc",
+        },
+        {
+          type: "string",
+          label: "Imgage Alt",
+          name: "imgAlt",
         },
         {
           type: "rich-text",
