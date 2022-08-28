@@ -24,6 +24,11 @@ const schema = defineSchema({
       format: "md",
       fields: [
         {
+          type: "string",
+          label: "Skip Nav",
+          name: "skip_nav",
+        },
+        {
           name: "pf",
           type: "image",
           label: "Profile Picture",
@@ -37,11 +42,6 @@ const schema = defineSchema({
           type: "string",
           label: "Subtitle",
           name: "subtitle",
-        },
-        {
-          type: "string",
-          label: "Skip Nav",
-          name: "skip_nav",
         },
         {
           type: "string",
