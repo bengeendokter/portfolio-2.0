@@ -12,8 +12,7 @@ This is my first game made with the Godot Engine. It's an infinite runner, high 
 
 ## Screenshots
 
-![Gameplay1](https://github.com/bengeendokter/GODOT-dragon-fly/blob/501cf40c12abb1af57bb2f10182381eb0338c5e1/promo/gif1.gif?raw=true "")
-![Gameplay2](https://github.com/bengeendokter/GODOT-dragon-fly/blob/main/promo/gif2.gif?raw=true "")
+![Dragon, fly! itch.io page](/assets/images/dragon-fly.png "")
 
 ## Controls
 

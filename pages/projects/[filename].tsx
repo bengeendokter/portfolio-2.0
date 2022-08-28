@@ -13,9 +13,14 @@ import ExtLink from "@components/ExtLink";
 import { client } from '../../.tina/__generated__/client';
 import Image from 'next/future/image';
 import { CSSProperties } from "styled-components";
+import ShareSVG from "@components/SVGIcons/share.svg";
+import { RWebShare } from "react-web-share";
+import { useRouter } from 'next/router';
 
 const BlogPage = (props: { variables: any, data: any, query: any, homeData: any }) =>
 {
+  const router = useRouter();
+
   const { data } = useTina({
     query: props.query,
     variables: props.variables,
@@ -39,8 +44,19 @@ const BlogPage = (props: { variables: any, data: any, query: any, homeData: any 
       </header>
       <main id='main-content' className={styles.main}>
         <h1>{data.projects.title}</h1>
-        <div className={styles.tags}>
-          {data.projects.tags.map((tag: string, i: number) => <Tag key={i}>{tag}</Tag>)}
+        <div className={styles.tags_share_container}>
+          <div className={styles.tags}>
+            {data.projects.tags.map((tag: string, i: number) => <Tag key={i}>{tag}</Tag>)}
+          </div>
+          <RWebShare data={
+            {
+              text: `${data.projects.description}`,
+              url: `https://bengeendokter.be${router.locale !== router.defaultLocale ? "/" + router.locale : ""}${router.asPath}`,
+              title: `${data.projects.title}`,
+            }
+          }>
+            <ShareSVG aria-label="Share" />
+          </RWebShare>
         </div>
         <ContentSection
           content={data.projects.body}
@@ -130,14 +146,14 @@ const ExtLinkComp = (props: { url: string, children: Element } | any) =>
 
 const ImgComp = (props: { url: string, alt?: string | undefined } | any) =>
 {
-  const container : CSSProperties =
+  const container: CSSProperties =
   {
     position: "relative",
     width: "100%",
     aspectRatio: "4/3"
   };
 
-  const img : CSSProperties =
+  const img: CSSProperties =
   {
     objectFit: "cover",
     borderRadius: "7px"

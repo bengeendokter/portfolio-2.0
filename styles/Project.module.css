@@ -40,6 +40,13 @@
   font-size: 1.1rem;
 }
 
+.tags_share_container
+{
+  display: flex;
+  justify-content: space-between;
+  margin-block-end: 1em;
+}
+
 .tags
 {
   margin-block: .5em;
