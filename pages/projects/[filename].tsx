@@ -12,7 +12,6 @@ import styles from '@styles/Project.module.css';
 import ExtLink from "@components/ExtLink";
 import { client } from '../../.tina/__generated__/client';
 import Image from 'next/future/image';
-import { relative } from "node:path/win32";
 import { CSSProperties } from "styled-components";
 
 const BlogPage = (props: { variables: any, data: any, query: any, homeData: any }) =>
