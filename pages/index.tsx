@@ -27,6 +27,7 @@ export default function Home(props: { variables: any, data: any, query: any, loc
     <>
     <Head>
     <meta property="og:image" content={homeData.pf} key="ogimage" />
+        <meta property="og:image:alt" content={homeData.pfImgAlt} key="ogimagealt" />
     </Head>
       <header>
         <NavHeader homeData={homeData}></NavHeader>

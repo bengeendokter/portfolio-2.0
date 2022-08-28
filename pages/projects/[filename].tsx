@@ -30,7 +30,9 @@ const BlogPage = (props: { variables: any, data: any, query: any, homeData: any 
         <title>{data.projects.title}</title>
         <meta property="og:title" content={data.projects.title} key="ogtitle" />
         <meta name="description" content={data.projects.description} />
+        <meta property="og:description" content={data.projects.description} />
         <meta property="og:image" content={data.projects.imgSrc} key="ogimage" />
+        <meta property="og:image:alt" content={data.projects.imgAlt} key="ogimagealt" />
       </Head>
       <header>
         <NavHeader homeData={homeData}></NavHeader>
