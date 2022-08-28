@@ -18,6 +18,9 @@ const App = ({ Component, pageProps }: any) =>
         <meta name="author" content="Ben Arts" />
         <title>Portfolio Ben</title>
 
+        <meta name="twitter:card" content="summary" key="twcard" />
+        <meta name="twitter:creator" content="@bengeendokter" key="twhandle" />
+
         <link rel="manifest" href="/manifest.json" />
         <link
           href="/favicon.ico"

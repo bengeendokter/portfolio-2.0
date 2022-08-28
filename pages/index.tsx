@@ -9,6 +9,7 @@ import ProjectNode from '@ts/ProjectNode';
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import Image from 'next/future/image';
+import Head from "next/head";
 
 export default function Home(props: { variables: any, data: any, query: any, locale: string, projects: any })
 {
@@ -24,6 +25,9 @@ export default function Home(props: { variables: any, data: any, query: any, loc
 
   return (
     <>
+    <Head>
+    <meta property="og:image" content={homeData.pf} key="ogimage" />
+    </Head>
       <header>
         <NavHeader homeData={homeData}></NavHeader>
       </header>
