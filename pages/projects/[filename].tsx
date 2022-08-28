@@ -55,7 +55,9 @@ const BlogPage = (props: { variables: any, data: any, query: any, homeData: any 
               title: `${data.projects.title}`,
             }
           }>
-            <ShareSVG aria-label="Share" />
+            <button aria-label="Share">
+              <ShareSVG />
+            </button>
           </RWebShare>
         </div>
         <ContentSection

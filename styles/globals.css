@@ -97,3 +97,13 @@ a
   color: rgb(59,130,246);
   text-decoration: underline;
 }
+
+button
+{
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background-color: transparent;
+}
