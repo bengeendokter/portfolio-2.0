@@ -17,6 +17,12 @@
   margin-top: 0rem;
   margin-bottom: 0rem;
   width: 100%;
+  line-height: 1.3rem;
+}
+
+.main p + p
+{
+  margin-block-start: 1rem;
 }
 
 .main h1
