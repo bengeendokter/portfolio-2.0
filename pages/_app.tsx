@@ -20,7 +20,7 @@ const App = ({ Component, pageProps }: any) =>
 
         <meta property="og:title" content="Portfolio Ben" key="ogtitle" />
         <meta property="og:site_name" content="Portfolio Ben" key="ogsitename" />
-        <meta property="og:description" content="Portfolio van Ben" />
+        <meta property="og:description" content="Portfolio van Ben" key="ogdescription" />
         <meta name="twitter:card" content="summary" key="twcard" />
         <meta name="twitter:creator" content="@bengeendokter" key="twhandle" />
 
