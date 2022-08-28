@@ -6,7 +6,7 @@ export default function createRSS(projects: Array<Project>, locales: Array<strin
 {
   const siteURL = process.env.NODE_ENV == 'development'
     ? "http://localhost:3000"
-    : "https://portfolio-tinacms.netlify.app";
+    : "https://bengeendokter.be";
   const date = new Date();
   const author = {
     name: "Ben",
@@ -19,8 +19,8 @@ export default function createRSS(projects: Array<Project>, locales: Array<strin
 
 
     const feed = new Feed({
-      title: "Tina PWA",
-      description: "Tina PWA",
+      title: "Portfolio Ben",
+      description: "Portfolio Ben",
       id: siteURL,
       link: siteURL,
       image: `${siteURL}/favicon.ico`,
@@ -37,7 +37,7 @@ export default function createRSS(projects: Array<Project>, locales: Array<strin
 
     projects.filter((post) => post._sys.breadcrumbs[0] == locale).forEach((post) =>
     {
-      const url = `${siteURL}/${post._sys.breadcrumbs[0]}/demo/blog/${post._sys.breadcrumbs[1]}`;
+      const url = `${siteURL}/${post._sys.breadcrumbs[0]}/projects/${post._sys.breadcrumbs[1]}`;
       feed.addItem({
         title: post.title,
         id: url,
