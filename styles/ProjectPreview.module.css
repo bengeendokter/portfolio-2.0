@@ -15,13 +15,14 @@
 {
   position: relative;
   width: 89%;
-  aspect-ratio: 460/329;
+  aspect-ratio: 4/3;
   margin-inline: auto;
 }
 
 .project_image img
 {
   border-radius: 7px;
+  object-fit: cover;
 }
 
 .project_info

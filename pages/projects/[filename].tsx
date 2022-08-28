@@ -12,6 +12,8 @@ import styles from '@styles/Project.module.css';
 import ExtLink from "@components/ExtLink";
 import { client } from '../../.tina/__generated__/client';
 import Image from 'next/future/image';
+import { relative } from "node:path/win32";
+import { CSSProperties } from "styled-components";
 
 const BlogPage = (props: { variables: any, data: any, query: any, homeData: any }) =>
 {
@@ -124,15 +126,30 @@ const ExtLinkComp = (props: { url: string, children: Element } | any) =>
 
 const ImgComp = (props: { url: string, alt?: string | undefined } | any) =>
 {
+  const container : CSSProperties =
+  {
+    position: "relative",
+    width: "100%",
+    aspectRatio: "4/3"
+  };
+
+  const img : CSSProperties =
+  {
+    objectFit: "cover",
+    borderRadius: "7px"
+  };
+
   return (
     <>
-      <Image
-        src={props.url}
-        width={460}
-        height={329}
-        alt={props.alt}
-        priority
-      />
+      <div style={container} >
+        <Image
+          src={props.url}
+          alt={props.alt}
+          style={img}
+          fill
+          priority
+        />
+      </div>
     </>
   )
 }
