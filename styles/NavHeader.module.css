@@ -3,13 +3,13 @@
   position: absolute;
   width: 100%;
   text-align: center;
-  transform: translateY(-200%);
+  transform: translateY(-120%);
   transition: transform 60ms ease-in;
 }
 
 .skip_nav:focus
 {
-  transform: translateY(-100%);
+  transform: translateY(-0%);
 }
 
 /* header */
