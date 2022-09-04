@@ -1,7 +1,7 @@
 .main
 {
-  background-color: hsla(var(--clr-white));
-  color: hsla(var(--clr-black));
+  background-color: hsla(var(--clr-background));
+  color: hsla(var(--clr-text));
   aspect-ratio: 1 / 1.4142;
   width: 90%;
   height: auto;

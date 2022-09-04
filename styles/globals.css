@@ -2,26 +2,39 @@
 
 :root
 {
-  --clr-purple: 278, 35%, 47%;
-  --clr-blue: 224, 25%, 48%;
-  --clr-black: 240, 21%, 8%;
-  --clr-white: 240, 100%, 99%;
-  --clr-gray: 0, 0%, 65%;
-  --clr-background: hsla(var(--clr-black));
-  --clr-accent1: hsla(var(--clr-purple));
-  --clr-accent2: hsla(var(--clr-blue));
-  --clr-text: hsla(var(--clr-white));
-  --clr-under-text: hsla(var(--clr-gray));
-  --clr-selection: hsla(64, 82%, 59%);
+  --clr-hsl-purple: 278, 35%, 47%;
+  --clr-hsl-blue: 224, 25%, 48%;
+  --clr-hsl-black: 240, 21%, 8%;
+  --clr-hsl-white: 240, 100%, 99%;
+  --clr-hsl-gray: 0, 0%, 65%;
+
+  --clr-background: hsl(var(--clr-hsl-black));
+  --clr-accent1: hsl(var(--clr-hsl-purple));
+  --clr-accent2: hsl(var(--clr-hsl-blue));
+  --clr-text: hsl(var(--clr-hsl-white));
+  --clr-under-text: hsl(var(--clr-hsl-gray));
+  --clr-selection: hsl(64, 82%, 59%);
+
+  --clr-github: hsl(215, 21%, 33%);
+  --clr-itch: hsl(0, 94%, 67%);
+  --clr-pwa: hsl(278, 35%, 47%);
+  --clr-googleplay: hsl(147, 62%, 30%);
 }
 
 /* light-theme */
-/* @media (prefers-color-scheme: dark)
+/* @media (prefers-color-scheme: light)
 {
   :root
   {
-  --clr-background: hsla(var(--clr-white));
-  --clr-text: hsla(var(--clr-black));
+  --clr-hsl-purple: 278, 45%, 70%;
+  --clr-hsl-blue: 224, 58%, 66%;
+  --clr-background: hsl(var(--clr-hsl-white));
+  --clr-text: hsl(var(--clr-hsl-black));
+
+  --clr-github: hsl(215, 21%, 63%);
+  --clr-itch: hsl(0, 94%, 75%);
+  --clr-pwa: hsl(278, 45%, 70%);
+  --clr-googleplay: hsl(147, 62%, 54%);
   }
 } */
 

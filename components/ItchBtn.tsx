@@ -6,7 +6,7 @@ export default function ItchBtn({href}:{href : string})
 {
     return (
         <>
-        <ExtBtn icon={<ItchSVG/>} label={"Play on itch.io"} color={'hsla(0, 94%, 67%)'} href={href}></ExtBtn>
+        <ExtBtn icon={<ItchSVG/>} label={"Play on itch.io"} color={'var(--clr-itch)'} href={href}></ExtBtn>
         </>
     );
 };

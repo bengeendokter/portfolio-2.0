@@ -6,7 +6,7 @@ export default function GitHubBtn({href}:{href : string})
 {
     return (
         <>
-        <ExtBtn icon={<GitHubSVG/>} label={"View code on GitHub"} color={'hsla(215, 21%, 33%)'} href={href}></ExtBtn>
+        <ExtBtn icon={<GitHubSVG/>} label={"View code on GitHub"} color={'var(--clr-github)'} href={href}></ExtBtn>
         </>
     );
 };
