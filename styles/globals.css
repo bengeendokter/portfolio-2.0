@@ -23,10 +23,8 @@
 }
 
 /* light-theme */
-/* @media (prefers-color-scheme: light)
+:root.light_mode
 {
-  :root
-  {
   color-scheme: light;
   --clr-hsl-purple: 278, 45%, 70%;
   --clr-hsl-blue: 224, 58%, 66%;
@@ -37,8 +35,7 @@
   --clr-itch: hsl(0, 94%, 75%);
   --clr-pwa: hsl(278, 45%, 70%);
   --clr-googleplay: hsl(147, 62%, 54%);
-  }
-} */
+}
 
 
 *, *::before, *::after
