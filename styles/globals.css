@@ -2,6 +2,7 @@
 
 :root
 {
+  color-scheme: dark;
   --clr-hsl-purple: 278, 35%, 47%;
   --clr-hsl-blue: 224, 25%, 48%;
   --clr-hsl-black: 240, 21%, 8%;
@@ -26,6 +27,7 @@
 {
   :root
   {
+  color-scheme: light;
   --clr-hsl-purple: 278, 45%, 70%;
   --clr-hsl-blue: 224, 58%, 66%;
   --clr-background: hsl(var(--clr-hsl-white));
