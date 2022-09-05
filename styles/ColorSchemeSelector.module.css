@@ -1,0 +1,43 @@
+.button
+{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+.button svg
+{
+    width: 1.2rem;
+}
+
+.dialog
+{
+    position: absolute;
+    z-index: 1;
+    margin: 0em;
+    padding: 0.7em;
+    border-radius: 12px;
+    right: 0.6em;
+    top: 2.7em;
+    margin-left: auto;
+}
+
+.selection
+{
+    list-style: none;
+    padding: 0em;
+    margin: 0em;
+}
+
+.selection button
+{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding-block: 0.3em;
+}
+
+.selection svg
+{
+    width: 1.2rem; 
+}

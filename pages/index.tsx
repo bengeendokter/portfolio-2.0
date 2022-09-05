@@ -1,7 +1,7 @@
 import { client } from '../.tina/__generated__/client';
 import CV from '@components/CV';
 import ProjectPreview from '@components/ProjectPreview';
-import NavHeader from '@components/NavHeader';
+import Header from '@components/Header';
 import Footer from '@components/Footer';
 import styles from '@styles/Home.module.css';
 import createRSS from '@utils/createRSS';
@@ -25,12 +25,12 @@ export default function Home(props: { variables: any, data: any, query: any, loc
 
   return (
     <>
-    <Head>
-    <meta property="og:image" content={homeData.pf} key="ogimage" />
+      <Head>
+        <meta property="og:image" content={homeData.pf} key="ogimage" />
         <meta property="og:image:alt" content={homeData.pfImgAlt} key="ogimagealt" />
-    </Head>
+      </Head>
       <header>
-        <NavHeader homeData={homeData}></NavHeader>
+        <Header homeData={homeData}></Header>
       </header>
       <main id='main-content'>
         <section className={styles.intro} aria-label='intro'>

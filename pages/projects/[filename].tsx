@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 import Path from "@ts/Path"
-import NavHeader from '@components/NavHeader';
+import Header from '@components/Header';
 import Footer from '@components/Footer';
 import Tag from '@components/Tag';
 import PWABtn from "@components/PWABtn";
@@ -40,7 +40,7 @@ const BlogPage = (props: { variables: any, data: any, query: any, homeData: any 
         <meta property="og:image:alt" content={data.projects.imgAlt} key="ogimagealt" />
       </Head>
       <header>
-        <NavHeader homeData={homeData}></NavHeader>
+        <Header homeData={homeData}></Header>
       </header>
       <main id='main-content' className={styles.main}>
         <h1>{data.projects.title}</h1>
