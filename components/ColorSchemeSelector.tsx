@@ -43,12 +43,12 @@ export default function ColorSchemeSelector()
 {
     return (
         <>
-            <button className={styles.button} ><Contrast/></button>
+            <button className={styles.button} aria-label="Color Scheme" ><Contrast/></button>
             <dialog open className={styles.dialog}>
             <ul className={styles.selection}>
                 <li><button><Dark/>Dark</button></li>
                 <li><button><Light/>Light</button></li>
-                <li><button><Contrast/> OS Default</button></li>
+                <li className={styles.active} ><button><Contrast/> OS Default</button></li>
             </ul>
             </dialog>
         </>

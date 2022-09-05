@@ -1,13 +1,24 @@
 .button
 {
     position: absolute;
-    top: 1em;
-    right: 1em;
+    top: 0.7em;
+    right: 0.7em;
+    border-radius: 100px / 99px;
+    display: flex;
+    padding: .3rem;
 }
 
 .button svg
 {
     width: 1.2rem;
+    fill: var(--clr-text);
+}
+
+.button:hover, .button:focus-visible
+{
+  transition: outline .1s ease;
+  outline: var(--clr-text) solid 2px;
+  outline-offset: 0.2em;  
 }
 
 .dialog
@@ -15,11 +26,12 @@
     position: absolute;
     z-index: 1;
     margin: 0em;
-    padding: 0.7em;
+    padding: 0em;
     border-radius: 12px;
     right: 0.6em;
     top: 2.7em;
     margin-left: auto;
+    background: var(--clr-background);
 }
 
 .selection
@@ -29,15 +41,35 @@
     margin: 0em;
 }
 
+.selection li
+{
+    padding: 0.7em;
+    border-radius: 12px; 
+}
+
+.selection li:hover:not(.active)
+{
+    transition: outline .1s ease;
+    outline: var(--clr-text) solid 2px;
+    outline-offset: -0.5em; 
+}
+
+.selection li.active
+{
+    border-radius: 9px; 
+    background: var(--clr-under-text);
+}
+
 .selection button
 {
     display: flex;
     align-items: center;
     gap: 0.5em;
-    padding-block: 0.3em;
+    font-weight: 500;
 }
 
 .selection svg
 {
-    width: 1.2rem; 
+    width: 1.2rem;
+    fill: var(--clr-text);
 }
