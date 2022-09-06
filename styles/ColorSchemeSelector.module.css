@@ -6,6 +6,7 @@
     border-radius: 100px / 99px;
     display: flex;
     padding: .3rem;
+    cursor: pointer;
 }
 
 .button svg
@@ -34,6 +35,12 @@
     background: var(--clr-background);
 }
 
+.dialog::backdrop
+{
+    z-index: -8;
+    display: none;
+}
+
 .selection
 {
     list-style: none;
@@ -41,31 +48,31 @@
     margin: 0em;
 }
 
-.selection li
-{
-    padding: 0.7em;
-    border-radius: 12px; 
-}
-
-.selection li:hover:not(.active)
+.selection button:hover:not(:disabled)
 {
     transition: outline .1s ease;
     outline: var(--clr-text) solid 2px;
     outline-offset: -0.5em; 
 }
 
-.selection li.active
+.selection button:disabled
 {
+    color: var(--clr-text);
     border-radius: 9px; 
     background: var(--clr-under-text);
+    cursor: default;
 }
 
 .selection button
 {
+    border-radius: 12px; 
+    padding: 0.7em;
     display: flex;
     align-items: center;
     gap: 0.5em;
     font-weight: 500;
+    cursor: pointer;
+    width: 100%;
 }
 
 .selection svg

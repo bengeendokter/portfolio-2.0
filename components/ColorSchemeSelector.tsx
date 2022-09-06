@@ -2,13 +2,21 @@ import styles from '@styles/ColorSchemeSelector.module.css';
 import Dark from '@components/SVGIcons/dark.svg';
 import Light from '@components/SVGIcons/light.svg';
 import Contrast from '@components/SVGIcons/contrast.svg';
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 
 export default function ColorSchemeSelector()
 {
     const modeNames = useMemo(() => ["dark", "light", "os"] as const, []);
     type mode = typeof modeNames[number];
     const [colorScheme, setColorScheme] = useState<mode>("dark");
+    const ref_dialog = useRef(null);
+
+    // dialog button function
+    const changeOpenState = useCallback(() =>
+    {
+        const dialog: any = ref_dialog.current;
+        dialog.showModal();
+    }, [ref_dialog]);
 
     // MediaQueryList object
     const useLight = useMemo(() =>
@@ -81,25 +89,32 @@ export default function ColorSchemeSelector()
     // Listen for changes in the OS settings.
     useEffect(() =>
     {
-        // TODO remove previous event listeners?
-
-        useLight!.addEventListener("change", (evt) =>
+        const listener = (evt: any) =>
         {
-            if(colorScheme === "os")
+            if((localStorage.getItem("colorScheme") ?? "dark") === "os")
             {
                 toggleLightMode(evt.matches ? "light" : "dark");
             }
-        });
-    }, [useLight, colorScheme, toggleLightMode]);
+        };
+  
+        useLight!.addEventListener("change", listener);
+    }, [useLight, toggleLightMode]);
+    
+    const Icons =
+    {
+        dark: <Dark/>,
+        light: <Light/>,
+        os: <Contrast/>,
+    };
 
     return (
         <>
-            <button className={styles.button} aria-label="Color Scheme"><Contrast /></button>
-            <dialog open className={styles.dialog}>
+            <button type='button' onClick={changeOpenState} className={styles.button} aria-label="Color Scheme">{Icons[`${colorScheme}`]}</button>
+            <dialog ref={ref_dialog} className={styles.dialog}>
                 <ul className={styles.selection}>
-                    <li><button onClick={() => changePreference("dark")} ><Dark />Dark</button></li>
-                    <li><button onClick={() => changePreference("light")} ><Light />Light</button></li>
-                    <li className={styles.active} onClick={() => changePreference("os")} ><button><Contrast /> OS Default</button></li>
+                    <li><button type='button' disabled={colorScheme === "dark"} onClick={() => changePreference("dark")} ><Dark/> Dark</button></li>
+                    <li><button type='button' disabled={colorScheme === "light"} onClick={() => changePreference("light")} ><Light />Light</button></li>
+                    <li><button type='button' disabled={colorScheme === "os"} onClick={() => changePreference("os")}><Contrast /> OS Default</button></li>
                 </ul>
             </dialog>
         </>
