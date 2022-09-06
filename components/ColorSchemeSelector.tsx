@@ -9,14 +9,51 @@ export default function ColorSchemeSelector()
     const modeNames = useMemo(() => ["dark", "light", "os"] as const, []);
     type mode = typeof modeNames[number];
     const [colorScheme, setColorScheme] = useState<mode>("dark");
-    const ref_dialog = useRef(null);
+    const [isOpen, setOpen] = useState(false);
+    const ref_dialog: any = useRef(null);
+    const ref_button: any = useRef(null);
 
-    // dialog button function
-    const changeOpenState = useCallback(() =>
+    // Dialog functions
+    const toggleDialog = useCallback(() =>
     {
-        const dialog: any = ref_dialog.current;
-        dialog.showModal();
-    }, [ref_dialog]);
+        setOpen(!isOpen);
+    }, [setOpen, isOpen]);
+
+    const closeDialog = useCallback(() =>
+    {
+        setOpen(false);
+    }, [setOpen]);
+
+    const handleEsc = useCallback((event) =>
+    {
+        if(event.key === "Escape")
+        {
+            closeDialog()
+        }
+    }, [closeDialog]);
+
+    useEffect(() =>
+    {
+        if(typeof window !== 'undefined')
+        {
+            window.addEventListener('keydown', handleEsc);
+        }
+
+        function handleClickOutside(event: any)
+        {
+            if(!ref_dialog.current.contains(event.target) && !ref_button.current.contains(event.target))
+            {
+                closeDialog();
+            }
+        }
+        // Bind the event listener
+        document.addEventListener("mousedown", handleClickOutside);
+        return () =>
+        {
+            // Unbind the event listener on clean up
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+    });
 
     // MediaQueryList object
     const useLight = useMemo(() =>
@@ -96,23 +133,23 @@ export default function ColorSchemeSelector()
                 toggleLightMode(evt.matches ? "light" : "dark");
             }
         };
-  
+
         useLight!.addEventListener("change", listener);
     }, [useLight, toggleLightMode]);
-    
+
     const Icons =
     {
-        dark: <Dark/>,
-        light: <Light/>,
-        os: <Contrast/>,
+        dark: <Dark />,
+        light: <Light />,
+        os: <Contrast />,
     };
 
     return (
         <>
-            <button type='button' onClick={changeOpenState} className={styles.button} aria-label="Color Scheme">{Icons[`${colorScheme}`]}</button>
-            <dialog ref={ref_dialog} className={styles.dialog}>
+            <button ref={ref_button} type='button' onClick={() => toggleDialog()} className={styles.button} aria-label="Color Scheme">{Icons[`${colorScheme}`]}</button>
+            <dialog ref={ref_dialog} open={isOpen} className={styles.dialog}>
                 <ul className={styles.selection}>
-                    <li><button type='button' disabled={colorScheme === "dark"} onClick={() => changePreference("dark")} ><Dark/> Dark</button></li>
+                    <li><button type='button' disabled={colorScheme === "dark"} onClick={() => changePreference("dark")} ><Dark /> Dark</button></li>
                     <li><button type='button' disabled={colorScheme === "light"} onClick={() => changePreference("light")} ><Light />Light</button></li>
                     <li><button type='button' disabled={colorScheme === "os"} onClick={() => changePreference("os")}><Contrast /> OS Default</button></li>
                 </ul>
