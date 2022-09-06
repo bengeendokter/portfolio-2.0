@@ -73,6 +73,21 @@ const schema = defineSchema({
           type: "string",
           label: "Copyright",
           name: "copyright",
+        },
+        {
+          type: "string",
+          label: "Dark",
+          name: "dark",
+        },
+        {
+          type: "string",
+          label: "Light",
+          name: "light",
+        },
+        {
+          type: "string",
+          label: "OS Default",
+          name: "os_default",
         }
       ],
     },

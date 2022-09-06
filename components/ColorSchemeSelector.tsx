@@ -4,7 +4,7 @@ import Light from '@components/SVGIcons/light.svg';
 import Contrast from '@components/SVGIcons/contrast.svg';
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 
-export default function ColorSchemeSelector()
+export default function ColorSchemeSelector({ homeData }: { homeData: { dark: string, light: string, os_default: string }})
 {
     const modeNames = useMemo(() => ["dark", "light", "os"] as const, []);
     type mode = typeof modeNames[number];
@@ -149,9 +149,9 @@ export default function ColorSchemeSelector()
             <button ref={ref_button} type='button' onClick={() => toggleDialog()} className={styles.button} aria-label="Color Scheme">{Icons[`${colorScheme}`]}</button>
             <dialog ref={ref_dialog} open={isOpen} className={styles.dialog}>
                 <ul className={styles.selection}>
-                    <li><button type='button' disabled={colorScheme === "dark"} onClick={() => changePreference("dark")} ><Dark /> Dark</button></li>
-                    <li><button type='button' disabled={colorScheme === "light"} onClick={() => changePreference("light")} ><Light />Light</button></li>
-                    <li><button type='button' disabled={colorScheme === "os"} onClick={() => changePreference("os")}><Contrast /> OS Default</button></li>
+                    <li><button type='button' disabled={colorScheme === "dark"} onClick={() => changePreference("dark")} ><Dark /> {homeData.dark}</button></li>
+                    <li><button type='button' disabled={colorScheme === "light"} onClick={() => changePreference("light")} ><Light /> {homeData.light}</button></li>
+                    <li><button type='button' disabled={colorScheme === "os"} onClick={() => changePreference("os")}><Contrast /> {homeData.os_default}</button></li>
                 </ul>
             </dialog>
         </>

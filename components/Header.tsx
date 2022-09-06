@@ -3,7 +3,7 @@ import styles from '@styles/Header.module.css';
 import Link from 'next/link';
 import ColorSchemeSelector from '@components/ColorSchemeSelector';
 
-export default function Header({ homeData }: { homeData: { skip_nav: string, projects_heading: string, cv_heading: string } })
+export default function Header({ homeData }: { homeData: { skip_nav: string, projects_heading: string, cv_heading: string, dark: string, light: string, os_default: string } })
 {
   return (
     <>
@@ -14,7 +14,7 @@ export default function Header({ homeData }: { homeData: { skip_nav: string, pro
           <li><Link href="/#CV"><a>{homeData.cv_heading}</a></Link></li>
         </ul>
       </nav>
-      <ColorSchemeSelector/>
+      <ColorSchemeSelector homeData={homeData}/>
     </>
   );
 };
