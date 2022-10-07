@@ -1,13 +1,13 @@
 ---
+skip_nav: Skip Navigation
 pf: /assets/images/PF.jpg
 pfImgAlt: myself
 subtitle: not a doctor
-skip_nav: Skip Navigation
 projects_heading: Projects
+read_more: Read more
 cv_heading: CV
 dowload_cv_label: Download CV
 copyright: All rights reserved
-read_more: Read mored
 dark: Dark
 light: Light
 os_default: OS Default
