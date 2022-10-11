@@ -75,13 +75,23 @@ export const getStaticProps = async ({ params, locale }: Path) =>
   const homeResponse = await client.queries.pages({ relativePath: `${locale}/home.md` });
 
   // project content ophalen
-  const projectResponse = await client.queries.projects({ relativePath: `${locale}/${params.filename}.md` });
+  let projectResponse: {variables: any, data: any, query: any} | undefined;
+
+  try
+  {
+    projectResponse = await client.queries.projects({ relativePath: `${locale}/${params.filename}.md` });
+  } 
+  catch (err)
+  {
+    return { notFound: true }
+  }
+  
 
   return {
     props: {
-      variables: projectResponse.variables,
-      data: projectResponse.data,
-      query: projectResponse.query,
+      variables: projectResponse?.variables,
+      data: projectResponse?.data,
+      query: projectResponse?.query,
       homeData: homeResponse.data.pages,
     },
   }
