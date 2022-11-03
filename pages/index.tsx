@@ -1,15 +1,15 @@
-import { client } from '../.tina/__generated__/client';
-import CV from '@components/CV';
-import ProjectPreview from '@components/ProjectPreview';
-import Header from '@components/Header';
-import Footer from '@components/Footer';
-import styles from '@styles/Home.module.css';
-import createRSS from '@utils/createRSS';
-import ProjectNode from '@ts/ProjectNode';
-import { useTina } from "tinacms/dist/edit-state";
-import { TinaMarkdown } from 'tinacms/dist/rich-text';
-import Image from 'next/future/image';
+import CV from "@components/CV";
+import Footer from "@components/Footer";
+import Header from "@components/Header";
+import ProjectPreview from "@components/ProjectPreview";
+import styles from "@styles/Home.module.css";
+import ProjectNode from "@ts/ProjectNode";
+import createRSS from "@utils/createRSS";
+import Image from "next/future/image";
 import Head from "next/head";
+import { useTina } from "tinacms/dist/edit-state";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { client } from "../.tina/__generated__/client";
 
 export default function Home(props: { variables: any, data: any, query: any, locale: string, projects: any })
 {
@@ -17,9 +17,9 @@ export default function Home(props: { variables: any, data: any, query: any, loc
     query: props.query,
     variables: props.variables,
     data: props.data,
-  })
+  });
 
-  const homeData = data.pages
+  const homeData = data.pages;
 
   const projects: Array<ProjectNode> = props.projects.filter((project: ProjectNode) => project._sys.breadcrumbs[0] == props.locale);
 
@@ -62,18 +62,18 @@ export default function Home(props: { variables: any, data: any, query: any, loc
       </main>
       <Footer homeData={homeData}></Footer>
     </>
-  )
+  );
 }
 
 export const getStaticProps = async ({ locales, locale }: { locales: Array<string>, locale: string }) =>
 {
   // home content ophalen
-  const homeResponse = await client.queries.pages({ relativePath: `${locale}/home.md` })
+  const homeResponse = await client.queries.pages({ relativePath: `${locale}/home.md` });
 
   // posts ophalen
   const projectsResponse = await client.queries.projectsConnection();
 
-  const projects: Array<ProjectNode> | any = projectsResponse.data.projectsConnection.edges!.map((post) => { return post!.node! });
+  const projects: Array<ProjectNode> | any = projectsResponse.data.projectsConnection.edges!.map((post) => { return post!.node!; });
   createRSS(projects, locales);
 
   return {
@@ -84,5 +84,5 @@ export const getStaticProps = async ({ locales, locale }: { locales: Array<strin
       projects,
       locale,
     },
-  }
+  };
 };

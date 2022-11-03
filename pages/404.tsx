@@ -1,6 +1,7 @@
-import Link from 'next/link'
+import Link from "next/link";
 
-export default function FourOhFour() {
+export default function FourOhFour()
+{
   return <>
     <h1>Page Not Found</h1>
     <Link href="/">
@@ -8,5 +9,5 @@ export default function FourOhFour() {
         Go back home
       </a>
     </Link>
-  </>
+  </>;
 }

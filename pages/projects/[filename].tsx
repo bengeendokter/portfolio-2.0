@@ -1,21 +1,21 @@
+import ExtLink from "@components/ExtLink";
+import Footer from "@components/Footer";
+import GitHubBtn from "@components/GitHubBtn";
+import Header from "@components/Header";
+import ItchBtn from "@components/ItchBtn";
+import PWABtn from "@components/PWABtn";
+import ShareSVG from "@components/SVGIcons/share.svg";
+import Tag from "@components/Tag";
+import styles from "@styles/Project.module.css";
+import Path from "@ts/Path";
+import Image from "next/future/image";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { RWebShare } from "react-web-share";
+import { CSSProperties } from "styled-components";
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import Path from "@ts/Path";
-import Header from "@components/Header";
-import Footer from "@components/Footer";
-import Tag from "@components/Tag";
-import PWABtn from "@components/PWABtn";
-import ItchBtn from "@components/ItchBtn";
-import GitHubBtn from "@components/GitHubBtn";
-import styles from "@styles/Project.module.css";
-import ExtLink from "@components/ExtLink";
 import { client } from "../../.tina/__generated__/client";
-import Image from "next/future/image";
-import { CSSProperties } from "styled-components";
-import ShareSVG from "@components/SVGIcons/share.svg";
-import { RWebShare } from "react-web-share";
-import { useRouter } from "next/router";
 
 const BlogPage = (props: { variables: any, data: any, query: any, homeData: any }) =>
 {

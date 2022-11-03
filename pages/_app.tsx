@@ -1,6 +1,6 @@
-import Tina from '../.tina/components/TinaDynamicProvider.js'
-import '@styles/globals.css'
-import Head from 'next/head'
+import "@styles/globals.css";
+import Head from "next/head";
+import Tina from "../.tina/components/TinaDynamicProvider.js";
 
 const App = ({ Component, pageProps }: any) =>
 {
@@ -34,7 +34,7 @@ const App = ({ Component, pageProps }: any) =>
       </Head>
       <Component {...pageProps} />
     </Tina>
-  )
-}
+  );
+};
 
-export default App
+export default App;
