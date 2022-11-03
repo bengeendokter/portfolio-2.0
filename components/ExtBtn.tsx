@@ -1,4 +1,3 @@
-import React from "react";
 import ExtLink from "@components/ExtLink";
 import styles from "@styles/ExtBtn.module.css";
 

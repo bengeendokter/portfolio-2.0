@@ -1,4 +1,3 @@
-import React from "react";
 import ExtBtn from "@components/ExtBtn";
 import GooglePlaySVG from "@components/SVGIcons/google-play.svg";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import ExtBtn from "@components/ExtBtn";
 import ItchSVG from "@components/SVGIcons/itchio.svg";
 

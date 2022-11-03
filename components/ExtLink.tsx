@@ -1,4 +1,3 @@
-import React from "react";
 
 export default function ExtLink({ children, href, target = "_blank", ...rest } : any)
 {

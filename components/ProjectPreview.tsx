@@ -1,8 +1,8 @@
 import Tag from "@components/Tag";
 import styles from "@styles/ProjectPreview.module.css";
 import Project from "@ts/Project";
-import Link from "next/link";
 import Image from "next/future/image";
+import Link from "next/link";
 
 export default function ProjectPreview({ project: { title, tags, description, imgSrc, imgAlt, github, _sys, ...rest }, homeData }: { project: Project, homeData: { read_more: string } })
 {
