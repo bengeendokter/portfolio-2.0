@@ -1,10 +1,10 @@
-import React from 'react';
-import styles from '@styles/Footer.module.css';
-import ExtLink from '@components/ExtLink';
-import GithubSVG from '@components/SVGIcons/github.svg';
-import LinkedinSVG from '@components/SVGIcons/linkedin.svg';
+import React from "react";
+import styles from "@styles/Footer.module.css";
+import ExtLink from "@components/ExtLink";
+import GithubSVG from "@components/SVGIcons/github.svg";
+import LinkedinSVG from "@components/SVGIcons/linkedin.svg";
 
-export default function Footer({homeData} : {homeData: {copyright : string}})
+export default function Footer({ homeData } : {homeData: {copyright : string}})
 {
     return (
         <>

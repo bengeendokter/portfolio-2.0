@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from '@styles/Header.module.css';
-import Link from 'next/link';
-import ColorSchemeSelector from '@components/ColorSchemeSelector';
+import React from "react";
+import styles from "@styles/Header.module.css";
+import Link from "next/link";
+import ColorSchemeSelector from "@components/ColorSchemeSelector";
 
 export default function Header({ homeData }: { homeData: { skip_nav: string, projects_heading: string, cv_heading: string, dark: string, light: string, os_default: string } })
 {

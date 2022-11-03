@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from '@styles/Tag.module.css';
+import React from "react";
+import styles from "@styles/Tag.module.css";
 
-export default function Tag({children, ...rest} : any)
+export default function Tag({ children, ...rest } : any)
 {
     return (
         <span className={styles.main}>

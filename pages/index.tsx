@@ -60,7 +60,7 @@ export default function Home(props: { variables: any, data: any, query: any, loc
           <a className={styles.download_button} href="./assets/documents/BenArtsCV.pdf" download="BenArtsCV">Download CV</a>
         </section>
       </main>
-      <Footer homeData={homeData}></Footer>   
+      <Footer homeData={homeData}></Footer>
     </>
   )
 }

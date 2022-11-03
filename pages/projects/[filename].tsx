@@ -1,21 +1,21 @@
 import Head from "next/head";
 import { useTina } from "tinacms/dist/edit-state";
-import { TinaMarkdown } from 'tinacms/dist/rich-text'
-import Path from "@ts/Path"
-import Header from '@components/Header';
-import Footer from '@components/Footer';
-import Tag from '@components/Tag';
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import Path from "@ts/Path";
+import Header from "@components/Header";
+import Footer from "@components/Footer";
+import Tag from "@components/Tag";
 import PWABtn from "@components/PWABtn";
 import ItchBtn from "@components/ItchBtn";
 import GitHubBtn from "@components/GitHubBtn";
-import styles from '@styles/Project.module.css';
+import styles from "@styles/Project.module.css";
 import ExtLink from "@components/ExtLink";
-import { client } from '../../.tina/__generated__/client';
-import Image from 'next/future/image';
+import { client } from "../../.tina/__generated__/client";
+import Image from "next/future/image";
 import { CSSProperties } from "styled-components";
 import ShareSVG from "@components/SVGIcons/share.svg";
 import { RWebShare } from "react-web-share";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 const BlogPage = (props: { variables: any, data: any, query: any, homeData: any }) =>
 {
@@ -25,7 +25,7 @@ const BlogPage = (props: { variables: any, data: any, query: any, homeData: any 
     query: props.query,
     variables: props.variables,
     data: props.data,
-  })
+  });
 
   const homeData = props.homeData;
 
@@ -75,17 +75,17 @@ export const getStaticProps = async ({ params, locale }: Path) =>
   const homeResponse = await client.queries.pages({ relativePath: `${locale}/home.md` });
 
   // project content ophalen
-  let projectResponse: {variables: any, data: any, query: any} | undefined;
+  let projectResponse: { variables: any, data: any, query: any } | undefined;
 
   try
   {
     projectResponse = await client.queries.projects({ relativePath: `${locale}/${params.filename}.md` });
-  } 
-  catch (err)
-  {
-    return { notFound: true }
   }
-  
+  catch(err)
+  {
+    return { notFound: true };
+  }
+
 
   return {
     props: {
@@ -94,14 +94,14 @@ export const getStaticProps = async ({ params, locale }: Path) =>
       query: projectResponse?.query,
       homeData: homeResponse.data.pages,
     },
-  }
+  };
 };
 
 export const getStaticPaths = async () =>
 {
   const paths: Array<Path> = [];
   const projectsResponse = await client.queries.projectsConnection();
-  projectsResponse.data.projectsConnection.edges!.forEach((post) => 
+  projectsResponse.data.projectsConnection.edges!.forEach((post) =>
   {
     // ensure a `path` is created for each `locale`
     paths.push({
@@ -113,7 +113,7 @@ export const getStaticPaths = async () =>
   return {
     paths,
     fallback: "blocking",
-  }
+  };
 };
 
 export default BlogPage;
@@ -126,8 +126,8 @@ const GitHubBtnComp = (props: { href: string }) =>
     <>
       <GitHubBtn href={props.href} />
     </>
-  )
-}
+  );
+};
 
 const ItchBtnComp = (props: { href: string }) =>
 {
@@ -135,8 +135,8 @@ const ItchBtnComp = (props: { href: string }) =>
     <>
       <ItchBtn href={props.href} />
     </>
-  )
-}
+  );
+};
 
 const PWABtnComp = (props: { href: string }) =>
 {
@@ -144,8 +144,8 @@ const PWABtnComp = (props: { href: string }) =>
     <>
       <PWABtn href={props.href} />
     </>
-  )
-}
+  );
+};
 
 const ExtLinkComp = (props: { url: string, children: Element } | any) =>
 {
@@ -153,8 +153,8 @@ const ExtLinkComp = (props: { url: string, children: Element } | any) =>
     <>
       <ExtLink href={props.url} >{props.children}</ExtLink>
     </>
-  )
-}
+  );
+};
 
 const ImgComp = (props: { url: string, alt?: string | undefined } | any) =>
 {
@@ -162,13 +162,13 @@ const ImgComp = (props: { url: string, alt?: string | undefined } | any) =>
   {
     position: "relative",
     width: "100%",
-    aspectRatio: "4/3"
+    aspectRatio: "4/3",
   };
 
   const img: CSSProperties =
   {
     objectFit: "cover",
-    borderRadius: "7px"
+    borderRadius: "7px",
   };
 
   return (
@@ -183,8 +183,8 @@ const ImgComp = (props: { url: string, alt?: string | undefined } | any) =>
         />
       </div>
     </>
-  )
-}
+  );
+};
 
 const components = {
   GitHubBtn: GitHubBtnComp,
@@ -192,7 +192,7 @@ const components = {
   PWABtn: PWABtnComp,
   a: ExtLinkComp,
   img: ImgComp,
-}
+};
 
 const ContentSection = ({ content }: { content: any }) =>
 {

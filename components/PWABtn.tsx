@@ -1,12 +1,12 @@
-import React from 'react';
-import ExtBtn from '@components/ExtBtn';
-import PWASVG from '@components/SVGIcons/pwa.svg';
+import React from "react";
+import ExtBtn from "@components/ExtBtn";
+import PWASVG from "@components/SVGIcons/pwa.svg";
 
-export default function PWABtn({href}:{href : string})
+export default function PWABtn({ href }:{href : string})
 {
     return (
         <>
-        <ExtBtn icon={<PWASVG/>} label={"Open PWA"} color={'var(--clr-pwa)'} href={href}></ExtBtn>
+        <ExtBtn icon={<PWASVG/>} label={"Open PWA"} color={"var(--clr-pwa)"} href={href}></ExtBtn>
         </>
     );
 };

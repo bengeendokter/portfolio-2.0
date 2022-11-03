@@ -1,5 +1,5 @@
-import styles from '@styles/CV.module.css';
-import Image from 'next/future/image';
+import styles from "@styles/CV.module.css";
+import Image from "next/future/image";
 import img from "../public/assets/images/CV.png";
 
 export default function CV()
@@ -22,7 +22,7 @@ export default function CV()
         //             een <strong>behulpzaam</strong> en <strong>bemiddelend</strong> persoon
         //             met <strong>oog voor detail</strong>.
         //             Ik ben op zoek naar mijn eerste job in <strong>(web)development</strong> waar
-        //             ik mee kan nadenken over het oplossen van problemen en nog veel kan bijleren.  
+        //             ik mee kan nadenken over het oplossen van problemen en nog veel kan bijleren.
         //         </p>
         //         <p><a href="mailto:ben.arts.mail@gmail.com">ben.arts.mail@gmail.com</a></p>
         //         <p><a href="tel:+32 400 00 00 00">+32 400 00 00 00</a></p>
