@@ -21,7 +21,7 @@ const App = ({ Component, pageProps }: any) =>
         <meta property="og:title" content="Portfolio Ben" key="ogtitle" />
         <meta property="og:site_name" content="Portfolio Ben" key="ogsitename" />
         <meta property="og:description" content="Portfolio van Ben" key="ogdescription" />
-        <meta name="twitter:card" content="summary" key="twcard" />
+        <meta name="twitter:card" content="summary_large_image" key="twcard" />
         <meta name="twitter:creator" content="@bengeendokter" key="twhandle" />
 
         <link rel="manifest" href="/manifest.json" />
