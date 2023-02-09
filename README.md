@@ -14,5 +14,3 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 Visit the GraphQL playground at http://localhost:4001/altair/
-
-Enter the CMS at [your-development-url]/admin
