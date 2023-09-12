@@ -13,4 +13,4 @@ light: Licht
 os_default: Systeem standaard
 ---
 
-Hallo ik ben Ben, een student bachelor toegepaste informatica en dit is mijn portfolio. Hieronder vinden jullie mijn projecten en CV. Ik studeer deze zomer af en in augustus 2023 verhuis ik naar Lint. Daarom ben ik op zoek naar mijn eerste (web)development job in de regio Antwerpen en Mechelen.
+Hallo ik ben Ben, een ontwikkelaar van webapplicaties en dit is mijn portfolio. Hieronder vinden jullie een paar van mijn projecten en mijn CV. Van heden tot januari 2024 moet ik enkel nog mijn bachelorproef schrijven aangezien ik mijn stage en al mijn andere vakken reeds heb voltooid. Dit zorgt ervoor dat ik de tijd en kans heb om mijn capaciteiten op de werkvloer in te zetten. Daarom ben ik op zoek naar mijn eerste webdevelopment job in de regio rond Kontich, Antwerpen en Mechelen.
