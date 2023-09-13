@@ -13,4 +13,4 @@ light: Licht
 os_default: Systeem standaard
 ---
 
-Hallo ik ben Ben, een ontwikkelaar van webapplicaties en dit is mijn portfolio. Hieronder vinden jullie een paar van mijn projecten en mijn CV. Ik ben er helemaal klaar voor om mijn capaciteiten op de werkvloer in te zetten. Daarom ben ik op zoek naar mijn eerste webdevelopment job in de regio Kontich, Antwerpen of Mechelen.
+Hallo ik ben Ben, een ontwikkelaar van webapplicaties en dit is mijn portfolio. Hieronder vinden jullie een paar van mijn projecten en mijn CV. Ik ben er helemaal klaar voor om mijn capaciteiten op de werkvloer in te zetten. Daarom ben ik op zoek naar mijn eerste job in webdevelopment in de regio Kontich, Antwerpen of Mechelen.
